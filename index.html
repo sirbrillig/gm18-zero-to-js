@@ -127,6 +127,12 @@
 					</textarea>
 				</section>
 
+				<section data-markdown class="centered">
+					<textarea data-template>
+						A special thanks to Veselin for helping to create these slides.
+					</textarea>
+				</section>
+
 				<section data-markdown>
 					<textarea data-template>
 						## What are we covering?
@@ -576,10 +582,10 @@ undefined
 							<span class="note">(but they _can_ have their value modified; more on that later)</span>
 
 							```js
-							> const myName = 'Mojo Jojo'
-							> console.log( myName )
+							> const myName = 'Mojo Jojo';
+							> console.log( myName );
 							Mojo Jojo
-							> myName = 'The Mayor'
+							> myName = 'The Mayor';
 							TypeError: Assignment to constant variable.
 							```
 						</textarea>
@@ -589,16 +595,17 @@ undefined
 						<textarea data-template>
 							#### Variables
 
-							There are other data types besides strings.
+							There are other types of data besides strings. Some basics:
 
-							Basic ones are `Number` (a number) and `Boolean` (true or false).
+							- `Number` (a number)
+							- `Boolean` (true or false).
 
 							```js
-							> let numberOfIngredients = 4
-							> console.log( numberOfIngredients )
+							> let numberOfIngredients = 4;
+							> console.log( numberOfIngredients );
 							4
-							> let usingChemicalX = true
-							> console.log( usingChemicalX )
+							> let usingChemicalX = true;
+							> console.log( usingChemicalX );
 							true
 							```
 						</textarea>
@@ -608,15 +615,17 @@ undefined
 						<textarea data-template>
 							#### Variables
 
-							You can use arithmetic operators on Numbers.
+							You can use arithmetic operators on Numbers
+
+							(or on variables that contain Numbers).
 
 							<span class="note">`+`, `-`, `*`, `/`, `%`</span>
 
 							```js
-							> let numberOfIngredients = 3
-							> console.log( numberOfIngredients )
+							> let numberOfIngredients = 3;
+							> console.log( numberOfIngredients );
 							3
-							> console.log( numberOfIngredients + 1 )
+							> console.log( numberOfIngredients + 1 );
 							4
 							```
 						</textarea>
@@ -631,9 +640,9 @@ undefined
 							<span class="note">`+`</span>
 
 							```js
-							> let myName = 'Mojo'
-							> let myFullName = myName + ' Jojo'
-							> console.log( myFullName )
+							> let myName = 'Mojo';
+							> let myFullName = myName + ' Jojo';
+							> console.log( myFullName );
 							Mojo Jojo
 							```
 						</textarea>
@@ -646,10 +655,26 @@ undefined
 							You can use the `if` statement on a variable to decide what to do.
 
 							```js
-							> let myName = 'Mojo'
+							> let myName = 'Mojo';
 							> if ( myName === 'Mojo' ) {
-								console.log( 'It is you, Mojo Jojo!' )
-							}
+							>	console.log( 'It is you, Mojo Jojo!' );
+							> }
+							It is you, Mojo Jojo!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variable Conditions
+
+							The `if` statement must be followed by a condition in parenthesis and then curly braces around what you want to do if the condition is true.
+
+							```js
+							> let myName = 'Mojo';
+							> if ( myName === 'Mojo' ) {
+							>	console.log( 'It is you, Mojo Jojo!' );
+							> }
 							It is you, Mojo Jojo!
 							```
 						</textarea>
@@ -659,13 +684,12 @@ undefined
 						<textarea data-template>
 							### Variable Names
 
+							Choose good variable names.
+
 							```js
 							let a = [ 'Ballio', 'Ben', 'Broke', 'Marjorie' ];
 							let b = [ 'Bubbles', 'Blossom', 'Buttercup', 'Mojo Jojo' ];
 							let c = [ 'Veselin', 'Payton' ];
-
-							b.push( 'Professor' );
-							c.push( 'Matias' );
 							```
 
 							What are a, b, and c?
@@ -676,13 +700,12 @@ undefined
 						<textarea data-template>
 							### Variable Names
 
+							Choose good variable names.
+
 							```js
 							let students = [ 'Ballio', 'Ben', 'Broke', 'Marjorie' ];
 							let cartoonCharacters = [ 'Bubbles', 'Blossom', 'Buttercup', 'Mojo Jojo' ];
 							let teachers = [ 'Veselin', 'Payton' ];
-
-							cartoonCharacters.push( 'Professor' );
-							teachers.push( 'Matias' );
 							```
 						</textarea>
 					</section>
@@ -694,9 +717,9 @@ undefined
 
 							```js
 							let numberOfStudents = 22; //Integer
-							let welcomeText = 'Welcome to Whistler'; // String
+							let welcomeText = 'Welcome to the GM'; // String
 							let students = [ 'Ballio', 'Ben', 'Broke', 'Marjorie' ];
-							let teacher = { name: 'Veselin', age: 38 }; // Object
+							let teacher = { name: 'Payton', age: 38 }; // Object
 							let isDoorOpen = false; // Boolean
 							```
 						</textarea>
@@ -704,10 +727,16 @@ undefined
 
 					<section data-markdown>
 						<textarea data-template>
-							#### Exercise on Numbers and Strings
+							#### Exercise for Strings
 
-							<p class="fragment">Print the numbers from 1 to 9 separated by a comma</p>
-							<p class="fragment">Use prompt and alert to display a message 'Hello Name'</p>
+							Ask for a name and then display a message 'Hello [Name]'
+
+							Use `prompt()` to ask for something and `alert()` to display a message.
+
+							```js
+							let sign = prompt("What's your sign?");
+							alert("Cool!");
+							```
 						</textarea>
 					</section>
 
@@ -718,8 +747,8 @@ undefined
 							There are two other common basic types: `Array`, and `Object`.
 
 							```js
-							let myArray = []
-							let myObject = {}
+							let myArray = [];
+							let myObject = {};
 							```
 						</textarea>
 					</section>
@@ -731,10 +760,28 @@ undefined
 							Arrays are used to store more than one value in a single variable.
 
 							```js
-							let teachers = [ 'Veselin', 'Payton' ]
-							let classroom = { name: 'Powerpuff Squad', seats: 30 }
-							console.log( classroom.seats ) // 30
+							let powerPuffGirls = [ 'Bubbles', 'Buttercup' ];
 							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Arrays
+
+							An array is like many boxes with the same name.
+
+							```js
+							let powerPuffGirls = [ 'Bubbles', 'Buttercup' ];
+							```
+
+							<svg width="400" height="100">
+								<rect x="130" y="0" width="80" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<rect x="240" y="0" width="80" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">powerPuffGirls ➡</text>
+								<text x="142" y="45" font-family="Verdana" font-size="12" fill="black">'Bubbles'</text>
+								<text x="248" y="45" font-family="Verdana" font-size="12" fill="black">'Buttercup'</text>
+							</svg>
 						</textarea>
 					</section>
 
@@ -747,9 +794,9 @@ undefined
 							<span class="note">These are "stack" methods. There is also `pop()`, `shift()`, and `unshift()`.</span>
 
 							```js
-							> let powerPuffGirls = [ 'Bubbles', 'Buttercup' ]
-							> powerPuffGirls.push( 'Blossom' )
-							> console.log( powerPuffGirls )
+							> let powerPuffGirls = [ 'Bubbles', 'Buttercup' ];
+							> powerPuffGirls.push( 'Blossom' );
+							> console.log( powerPuffGirls );
 							[ 'Bubbles', 'Buttercup', 'Blossom' ]
 							```
 						</textarea>
@@ -762,25 +809,20 @@ undefined
 							You can examine the elements of an array using brackets around the _index_ of each element. The index starts at 0.
 
 							```js
-							> let powerPuffGirls = [ 'Bubbles', 'Buttercup', 'Blossom' ]
-							> console.log( powerPuffGirls[1] )
+							> let powerPuffGirls = [ 'Bubbles', 'Buttercup' ];
+							> console.log( powerPuffGirls[1] );
 							'Buttercup'
 							```
-						</textarea>
-					</section>
 
-					<section data-markdown>
-						<textarea data-template>
-							#### Arrays
-
-							You can also add items to an array by index:
-
-							```js
-							> let ppg = [ 'Bubbles', 'Buttercup' ]
-							> ppg[2] = 'Blossom'
-							> ppg
-							[ 'Bubbles', 'Buttercup', 'Blossom' ]
-							```
+							<svg width="400" height="100">
+								<rect x="130" y="20" width="80" height="40" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<rect x="240" y="20" width="80" height="40" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="170" y="10" font-family="fixed" font-size="14" fill="white">0</text>
+								<text x="270" y="10" font-family="fixed" font-size="14" fill="white">1</text>
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">powerPuffGirls ➡</text>
+								<text x="142" y="45" font-family="Verdana" font-size="12" fill="black">'Bubbles'</text>
+								<text x="248" y="45" font-family="Verdana" font-size="12" fill="black">'Buttercup'</text>
+							</svg>
 						</textarea>
 					</section>
 
@@ -802,14 +844,44 @@ undefined
 						<textarea data-template>
 							#### Exercise on Arrays
 
-							<p class="fragment">1. Create a list of all students</p>
+							<p class="fragment">1. Create a list of students</p>
 							<p class="fragment">2. Add a student with push</p>
-							<p class="fragment">3. Add a student by index</p>
-							<p class="fragment">4. Remove the first student</p>
-							<p class="fragment">5. Remove the last student</p>
-							<p class="fragment">6. How many students do we have left in the room?</p>
-							<p class="fragment">7. Sort the students alphabetically</p>
-							<p class="fragment">8. Sort the students on their reversed first names</p>
+							<p class="fragment">3. Remove the first student</p>
+							<p class="fragment">4. Remove the last student</p>
+							<p class="fragment">5. Remove the middle student</p>
+							<p class="fragment">6. How many students do we have left?</p>
+							<p class="fragment">7. [extra credit] Sort the students alphabetically</p>
+							<p class="fragment">8. [extra credit] Sort the students on their reversed first names</p>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Objects
+
+							Objects store key/value pairs.
+
+							```js
+							{ leader: 'Blossom', joy: 'Bubbles', fighter: 'Buttercup' };
+							```
+
+							They can contain multiple values like an Array, but each value must have a key, which is usually a string.
+
+							<span class="note">Also they do not have any order!</span>
+
+							<svg width="500" height="100">
+								<rect x="130" y="20" width="80" height="40" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<rect x="240" y="20" width="80" height="40" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<rect x="350" y="20" width="80" height="40" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="150" y="10" font-family="fixed" font-size="14" fill="white">leader</text>
+								<text x="260" y="10" font-family="fixed" font-size="14" fill="white">fighter</text>
+								<text x="370" y="10" font-family="fixed" font-size="14" fill="white">joy</text>
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">powerPuffGirls ➡</text>
+								<text x="142" y="45" font-family="Verdana" font-size="12" fill="black">'Blossom'</text>
+								<text x="248" y="45" font-family="Verdana" font-size="12" fill="black">'Buttercup'</text>
+								<text x="358" y="45" font-family="Verdana" font-size="12" fill="black">'Bubbles'</text>
+							</svg>
+
 						</textarea>
 					</section>
 
@@ -826,8 +898,8 @@ undefined
 								leader: 'Blossom',
 								joy: 'Bubbles',
 								fighter: 'Buttercup',
-							}
-							> console.log( powerPuffGirls )
+							};
+							> console.log( powerPuffGirls );
 							{ leader: 'Blossom', joy: 'Bubbles', fighter: 'Buttercup' }
 							```
 						</textarea>
@@ -846,8 +918,8 @@ undefined
 								leader: 'Blossom',
 								joy: 'Bubbles',
 								fighter: 'Buttercup',
-							}
-							> console.log( powerPuffGirls[ 'fighter' ] )
+							};
+							> console.log( powerPuffGirls[ 'fighter' ] );
 							'Buttercup'
 							```
 						</textarea>
@@ -864,8 +936,8 @@ undefined
 								leader: 'Blossom',
 								joy: 'Bubbles',
 								fighter: 'Buttercup',
-							}
-							> console.log( powerPuffGirls.joy )
+							};
+							> console.log( powerPuffGirls.joy );
 							'Bubbles'
 							```
 						</textarea>
@@ -875,16 +947,16 @@ undefined
 						<textarea data-template>
 							#### Objects
 
-							You can also change the values of object properties.
+							You can change the values of object properties, just like any other variable.
 
 							```js
 							> let powerPuffGirls = {
 								leader: 'Blossom',
 								joy: 'Bubbles',
 								fighter: 'Buttercup',
-							}
-							powerPuffGirls.leader = 'Brick'
-							> console.log( powerPuffGirls.leader )
+							};
+							> powerPuffGirls.leader = 'Brick';
+							> console.log( powerPuffGirls.leader );
 							'Brick'
 							```
 						</textarea>
@@ -895,11 +967,10 @@ undefined
 							#### Exercise on Objects
 
 							<ul>
-								<li>Create a classroom object representing our classroom.
+								<li>Create a `classroom` object representing our classroom.
 									It has a list students, a list of teachers, a number of tables and a number of seats</li>
 								<li class="fragment">Add a seat, remove a table.</li>
-								<li class="fragment">Kick out Payton and Veselin. Mojo Jojo is now the only teacher.</li>
-								<li class="fragment">PPGs join the class and the teacher is now the Professor</li>
+								<li class="fragment">Kick out Payton. Make Mojo Jojo the only teacher.</li>
 							</ul>
 						</textarea>
 					</section>
@@ -935,10 +1006,10 @@ undefined
 						<textarea data-template>
 							### Window Object
 
-							In the console, type window and press enter
-							<p class="fragment">The window object contains all global variables</p>
-							<p class="fragment">window lives in the browser context. There is no window in node.</p>
-							<p class="fragment">node, however, has global</p>
+							In the console, type `window` and press enter.
+							<p class="fragment">The `window` object contains all global variables.</p>
+							<p class="fragment">`window` lives in the browser context. There is no window in node.</p>
+							<p class="fragment">node, however, has `global`.</p>
 						</textarea>
 					</section>
 
@@ -949,11 +1020,11 @@ undefined
 							Try this in the browser console
 
 							```js
-								window.document === document
-								window.alert === alert
+								window.document === document;
+								window.alert === alert;
 							```
 
-							Now try it with node
+							Now try it with node.
 						</textarea>
 					</section>
 
@@ -965,7 +1036,7 @@ undefined
 
 							```js
 							> function addSugar() {
-								console.log( 'Sugar!' )
+								console.log( 'Sugar!' );
 							}
 
 							addSugar(); // This is called `to invoke` or `to call` a function
