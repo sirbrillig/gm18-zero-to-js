@@ -1,0 +1,2556 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Zero to JavaScript - GM18</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Custom styles -->
+		<style>
+.reveal li code,
+.reveal p code {
+	color: #FFD54F;
+}
+
+.reveal .lang-js {
+	font-size: 0.8em;
+}
+
+.reveal span.note {
+	font-size: 0.7em;
+}
+
+.reveal section p {
+	text-align: left;
+}
+
+.reveal section.centered p {
+	text-align: center;
+}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<script>
+			// Functions for dynamic slides go here
+			// Make sure to put any reset code in resetDynamicSlides
+			function resetDynamicSlides() {
+				let mojo = window.document.querySelector( '.mojo-jojo' )
+				mojo.style.visibility = 'hidden'
+
+				mojo = window.document.querySelector( '.mojo-jojo-transform img' )
+				mojo.src = 'img/mojo.gif'
+
+				mojo = window.document.querySelector( '.mojo-saying' )
+				mojo.innerHTML = 'I, Mojo Jojo, am your master.'
+
+				let parent = window.document.querySelector( '.create-powerpuff' )
+				parent.innerHTML = ''
+
+				parent = window.document.querySelector( '.create-bubbles' )
+				parent.innerHTML = ''
+
+				parent = window.document.querySelector( '.get-snacks' )
+				parent.innerHTML = ''
+			}
+
+			function showMojo() {
+				const mojo = window.document.querySelector( '.mojo-jojo' )
+				mojo.style.visibility = 'visible'
+			}
+
+			function toggleMojo() {
+				const mojo = document.querySelector( '.mojo-jojo-toggle' )
+				if ( mojo.style.visibility === 'visible' ) {
+					mojo.style.visibility = 'hidden'
+				} else {
+					mojo.style.visibility = 'visible'
+				}
+			}
+
+			function transformMojo() {
+				const mojo = window.document.querySelector( '.mojo-jojo-transform img' )
+				mojo.src = 'img/blossom.png'
+			}
+
+			function changeMojoSaying() {
+				const mojo = window.document.querySelector( '.mojo-saying' )
+				mojo.innerHTML = '<em>Curses!</em>'
+			}
+
+			function createPowerpuff() {
+				const parent = window.document.querySelector( '.create-powerpuff' )
+				const blossom = window.document.createElement( 'img' )
+				blossom.src = 'img/blossom.png'
+				parent.appendChild( blossom )
+			}
+
+			function createBubbles() {
+				const parent = window.document.querySelector( '.create-bubbles' )
+				const bubbles = window.document.createTextNode( 'I am the joy and the laughter' )
+				parent.appendChild( bubbles )
+			}
+
+			function getSnacks() {
+				const parent = window.document.querySelector( '.get-snacks' )
+				const blossom = window.document.createElement( 'img' )
+				blossom.src = 'img/ppg-chopsticks.jpg'
+				parent.appendChild( blossom )
+			}
+			function showValue() {
+				alert( document.forms[0][0].value );
+			}
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-markdown class="centered">
+					<textarea data-template>
+						<h2>Zero to JavaScript</h2>
+						<img src="img/ppg-1.jpg">
+						<p>a8c Grand Meetup 2018</p>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						## What are we covering?
+
+						- A little history.
+						- What can JavaScript do?
+						- Thinking like a program.
+						- Ways to run JavaScript.
+						- Fundamentals: variables, functions, and loops.
+						- The Web API.
+						- Binding and Prototypes.
+						- The wide world of npm modules.
+						- Calypso!
+					</textarea>
+				</section>
+
+				<section class="section-history">
+
+					<section data-markdown>
+						<textarea data-template>
+							## A Little History
+
+							<p class="fragment">- Created as "LiveScript" in 1995 for Netscape 2.0 and renamed "JavaScript".</p>
+							<p class="fragment">- Competed with other things that make websites move, like Java, Flash, and VBScript.</p>
+							<p class="fragment">- Standardized as ECMAScript (ES) in 1997.</p>
+							<p class="fragment">- Slowly evolved as ECMAScript 2 (1998), ES 3 (1999).</p>
+							<p class="fragment">- Eventually ES5 (2009), then ES2015, ES2016, etc.</p>
+						</textarea>
+					</section>
+				</section>
+
+				<section class="section-what-can-it-do">
+
+					<section data-markdown>
+						<textarea data-template>
+							## What can JavaScript Do?
+							<ul>
+								<li class="fragment">Image lightboxes</li>
+								<li class="fragment">Form validation</li>
+								<li class="fragment">Sliders, tabs, calendars</li>
+								<li class="fragment">Drawing and animation</li>
+								<li class="fragment">Single page web apps like wordpress.com</li>
+								<li class="fragment">Desktop applications like Slack</li>
+								<li class="fragment">Games</li>
+								<li class="fragment">It can save the day</li>
+							</ul>
+						</textarea>
+					</section>
+				</section>
+
+				<section class="section-thinking-like-program">
+
+					<section class="centered" data-markdown>
+						<textarea data-template>
+							## Let's start from the beginning
+							<p class="fragment">How to Eat with Chopsticks</p>
+							<p class="fragment"><img src="img/ppg-chopsticks.jpg" /></p>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Thinking like a Program
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Thinking like a Program
+
+							Computers are very fast calculators, but they are not good at understanding meaning and intent.
+
+							When you write a program, you must break down every step into simple pieces.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Thinking like a Program
+
+							It's helpful to try to imagine all the steps you need to do a "simple" task.
+
+							Try to come up with the steps necessary to draw a square on a piece of paper.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### How to Draw a Square
+
+							1. ...
+							1. ...
+							1. ...
+							1. ...
+							1. ...
+							1. ...
+							1. ...
+							1. ...
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### How to Draw a Square
+
+							1. Put some paper in front of you.
+							1. Pick up a pencil in your hand.
+							1. Press the pencil gently against the paper.
+							1. Move your hand to the right 5 cm (2 in).
+							1. Stop moving your hand.
+							1. Move your hand down 5 cm (2 in).
+							1. Stop moving your hand.
+							1. ...
+						</textarea>
+					</section>
+
+				</section>
+
+				<section class="section-ways-to-run-javascript">
+
+					<section data-markdown>
+						<textarea data-template>
+							## Ways to Run JavaScript
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Ways to Run JavaScript
+
+							- Web Browser Console
+							- Online tools
+							- HTML script tag
+							- Node
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Web Browser Console
+
+							On any web page, open the developer tools (CMD+Opt+i, click Console).
+							```js
+								21 * 2;
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Ways to Run JavaScript
+							#### Node REPL
+
+							In a terminal, type `node` ([node](https://nodejs.org/en/) must be installed first).
+
+							```
+							$ node
+> 'hello world'
+'hello world'
+> console.log( 'hello world' );
+hello world
+undefined
+> let greeting = 'Hello World';
+undefined
+> greeting;
+'Hello World'
+>
+
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Online tools
+
+							- [codepen.io](http://codepen.io)
+							- [jsbin.com](http://jsbin.com)
+							- ...
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Online tools
+
+							1. Open codepen.io
+							2. Type or copy-paste this and then click Run:
+							```js
+								let myName = 'Blossom';
+								alert( 'My name is ' + myName );
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### HTML inline script tag
+
+							```js
+							<div id="my-result"></div>
+
+							<script>
+								document.getElementById('my-result').innerHTML = 'Hello World!';
+							</script>
+							```
+
+							save this to a .html file and double click on it
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### HTML external script tag
+
+							```js
+							<script src="my-javascript-file.js"></script>
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Node file
+
+							In a terminal, type `node` followed by the filename.
+
+							```js
+							$ node my-javascript-file.js
+							hello world
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### How it works
+
+							1. The browser downloads all files
+							2. Executes the JavaScript line by line
+							3. If the browser cannot understand a line, it stops and displays an error in the console
+						</textarea>
+					</section>
+
+				</section>
+
+				<section class="section-javascript-fundamentals">
+
+					<section data-markdown>
+						<textarea data-template>
+							## JavaScript Fundamentals
+
+							<p class="fragment">Let's begin by using codepen, or node.</p>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Statements
+
+							A statement is an instruction to the computer.
+
+							End each statement with a semi-colon (`;`).
+
+							```js
+							> 'hello world';
+							'hello world'
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Strings
+
+							Words inside quotes are called a _string_.
+
+							```js
+							> 'hello world';
+							'hello world'
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Console
+
+							```js
+							console.log( 'Hello ' + 'World' );
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Comments
+
+							Words after `//` or between `/*` and `*/` are _comments_ and are ignored.
+
+							```js
+							> console.log( 'hello world' ); // this is a comment
+							hello world
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							Variables are like a box that holds something. The variable name points to the box.
+
+							```js
+							let myName;
+							```
+
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">myName ➡</text>
+							</svg>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							Variables are like a box that holds something. The "value" of the variable is the contents of the box.
+
+							```js
+							let myName;
+							myName = 'Mojo Jojo';
+							```
+
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">myName ➡</text>
+								<text x="100" y="45" font-family="Verdana" font-size="14" fill="black">'Mojo Jojo'</text>
+							</svg>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							You can also define the variable and give it a value all at once.
+
+							```js
+							let myName = 'Mojo Jojo';
+							```
+
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">myName ➡</text>
+								<text x="100" y="45" font-family="Verdana" font-size="14" fill="black">'Mojo Jojo'</text>
+							</svg>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							After it is defined, any time you use the variable name, it will be substituted for its value!
+
+							```js
+							let myName = 'Mojo Jojo';
+							console.log( myName );
+							Mojo Jojo
+							```
+
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">myName ➡</text>
+								<text x="100" y="45" font-family="Verdana" font-size="14" fill="black">'Mojo Jojo'</text>
+							</svg>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							You can change the values of exisiting variables.
+
+							```js
+							> let myName = 'Mojo Jojo';
+							> console.log( myName );
+							Mojo Jojo
+							```
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">myName ➡</text>
+								<text x="100" y="45" font-family="Verdana" font-size="14" fill="black">'Mojo Jojo'</text>
+							</svg>
+
+							```js
+							> myName = 'The Mayor';
+							> console.log( myName );
+							The Mayor
+							```
+
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">myName ➡</text>
+								<text x="100" y="45" font-family="Verdana" font-size="14" fill="black">'The Mayor'</text>
+							</svg>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							You can even have multiple variables pointing to the same box.
+
+							```js
+							> let myName = 'Mojo Jojo';
+							> let theHero = myName;
+							> console.log( theHero );
+							Mojo Jojo
+							```
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">myName ➡</text>
+								<text x="0" y="50" font-family="Verdana" font-size="14" fill="white">theHero ➡</text>
+								<text x="100" y="45" font-family="Verdana" font-size="14" fill="black">'Mojo Jojo'</text>
+							</svg>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							Other ways to define variables are `var` (an older version of `let`) and `const`.
+
+							`const` variables cannot have their value re-assigned.
+							<span class="note">(but they _can_ have their value modified; more on that later)</span>
+
+							```js
+							> const myName = 'Mojo Jojo'
+							> console.log( myName )
+							Mojo Jojo
+							> myName = 'The Mayor'
+							TypeError: Assignment to constant variable.
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							There are other data types besides strings.
+
+							Basic ones are `Number` (a number) and `Boolean` (true or false).
+
+							```js
+							> let numberOfIngredients = 4
+							> console.log( numberOfIngredients )
+							4
+							> let usingChemicalX = true
+							> console.log( usingChemicalX )
+							true
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							You can use arithmetic operators on Numbers.
+
+							<span class="note">`+`, `-`, `*`, `/`, `%`</span>
+
+							```js
+							> let numberOfIngredients = 3
+							> console.log( numberOfIngredients )
+							3
+							> console.log( numberOfIngredients + 1 )
+							4
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							You can use the _concatenation_ operator on Strings to join them together!
+
+							<span class="note">`+`</span>
+
+							```js
+							> let myName = 'Mojo'
+							> let myFullName = myName + ' Jojo'
+							> console.log( myFullName )
+							Mojo Jojo
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variable Conditions
+
+							You can use the `if` statement on a variable to decide what to do.
+
+							```js
+							> let myName = 'Mojo'
+							> if ( myName === 'Mojo' ) {
+								console.log( 'It is you, Mojo Jojo!' )
+							}
+							It is you, Mojo Jojo!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Variable Names
+
+							```js
+							let a = [ 'Ballio', 'Ben', 'Broke', 'Marjorie' ];
+							let b = [ 'Bubbles', 'Blossom', 'Buttercup', 'Mojo Jojo' ];
+							let c = [ 'Veselin', 'Payton' ];
+
+							b.push( 'Professor' );
+							c.push( 'Matias' );
+							```
+
+							What are a, b, and c?
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Variable Names
+
+							```js
+							let students = [ 'Ballio', 'Ben', 'Broke', 'Marjorie' ];
+							let cartoonCharacters = [ 'Bubbles', 'Blossom', 'Buttercup', 'Mojo Jojo' ];
+							let teachers = [ 'Veselin', 'Payton' ];
+
+							cartoonCharacters.push( 'Professor' );
+							teachers.push( 'Matias' );
+							```
+						</textarea>
+					</section>
+
+
+					<section data-markdown>
+						<textarea data-template>
+							### Meaningful Names
+
+							```js
+							let numberOfStudents = 22; //Integer
+							let welcomeText = 'Welcome to Whistler'; // String
+							let students = [ 'Ballio', 'Ben', 'Broke', 'Marjorie' ];
+							let teacher = { name: 'Veselin', age: 38 }; // Object
+							let isDoorOpen = false; // Boolean
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Exercise on Numbers and Strings
+
+							<p class="fragment">Print the numbers from 1 to 9 separated by a comma</p>
+							<p class="fragment">Use prompt and alert to display a message 'Hello Name'</p>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variables
+
+							There are two other common basic types: `Array`, and `Object`.
+
+							```js
+							let myArray = []
+							let myObject = {}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Arrays
+
+							Arrays are used to store more than one value in a single variable.
+
+							```js
+							let teachers = [ 'Veselin', 'Payton' ]
+							let classroom = { name: 'Powerpuff Squad', seats: 30 }
+							console.log( classroom.seats ) // 30
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Arrays
+
+							You can add things to an array by calling `ourArray.push()`
+
+							<span class="note">These are "stack" methods. There is also `pop()`, `shift()`, and `unshift()`.</span>
+
+							```js
+							> let powerPuffGirls = [ 'Bubbles', 'Buttercup' ]
+							> powerPuffGirls.push( 'Blossom' )
+							> console.log( powerPuffGirls )
+							[ 'Bubbles', 'Buttercup', 'Blossom' ]
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Arrays
+
+							You can examine the elements of an array using brackets around the _index_ of each element. The index starts at 0.
+
+							```js
+							> let powerPuffGirls = [ 'Bubbles', 'Buttercup', 'Blossom' ]
+							> console.log( powerPuffGirls[1] )
+							'Buttercup'
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Arrays
+
+							You can also add items to an array by index:
+
+							```js
+							> let ppg = [ 'Bubbles', 'Buttercup' ]
+							> ppg[2] = 'Blossom'
+							> ppg
+							[ 'Bubbles', 'Buttercup', 'Blossom' ]
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Arrays
+
+							You can see how many things are in an array by adding `.length` to the end of the array.
+
+							```js
+							> let powerPuffGirls = [ 'Bubbles', 'Buttercup', 'Blossom' ]
+							> console.log( powerPuffGirls.length )
+							3
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Exercise on Arrays
+
+							<p class="fragment">1. Create a list of all students</p>
+							<p class="fragment">2. Add a student with push</p>
+							<p class="fragment">3. Add a student by index</p>
+							<p class="fragment">4. Remove the first student</p>
+							<p class="fragment">5. Remove the last student</p>
+							<p class="fragment">6. How many students do we have left in the room?</p>
+							<p class="fragment">7. Sort the students alphabetically</p>
+							<p class="fragment">8. Sort the students on their reversed first names</p>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Objects
+
+							Objects store key/value pairs, separated by commas.
+
+							<span class="note">You can put the elements on the same line or multiple lines.</span>
+
+							```js
+							> let powerPuffGirls = {
+								leader: 'Blossom',
+								joy: 'Bubbles',
+								fighter: 'Buttercup',
+							}
+							> console.log( powerPuffGirls )
+							{ leader: 'Blossom', joy: 'Bubbles', fighter: 'Buttercup' }
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Objects
+
+							You can find the value for an Object key (called a "property") by putting the key in brackets.
+
+							<span class="note">Note that strings must be quoted in brackets, but not quoted when defined.</span>
+
+							```js
+							> let powerPuffGirls = {
+								leader: 'Blossom',
+								joy: 'Bubbles',
+								fighter: 'Buttercup',
+							}
+							> console.log( powerPuffGirls[ 'fighter' ] )
+							'Buttercup'
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Objects
+
+							If the key is a string that has no spaces, you can also find the value of an Object key by using "dot notation".
+
+							```js
+							> let powerPuffGirls = {
+								leader: 'Blossom',
+								joy: 'Bubbles',
+								fighter: 'Buttercup',
+							}
+							> console.log( powerPuffGirls.joy )
+							'Bubbles'
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Objects
+
+							You can also change the values of object properties.
+
+							```js
+							> let powerPuffGirls = {
+								leader: 'Blossom',
+								joy: 'Bubbles',
+								fighter: 'Buttercup',
+							}
+							powerPuffGirls.leader = 'Brick'
+							> console.log( powerPuffGirls.leader )
+							'Brick'
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Exercise on Objects
+
+							<ul>
+								<li>Create a classroom object representing our classroom.
+									It has a list students, a list of teachers, a number of tables and a number of seats</li>
+								<li class="fragment">Add a seat, remove a table.</li>
+								<li class="fragment">Kick out Payton and Veselin. Mojo Jojo is now the only teacher.</li>
+								<li class="fragment">PPGs join the class and the teacher is now the Professor</li>
+							</ul>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### False, null, and undefined
+
+							```js
+							let a = null;
+							let b; // undefined
+							let c = {};
+
+							console.log( a == b ); // true
+							console.log( a === b ) // false
+							console.log( c.hasHat ); // undefined
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### False, null, and undefined
+
+							- `null` is intentional absence of value
+							- `undefined` is self explanatory, but also a global variable and a primitive type
+							```js
+							typeof undefined; // "undefined"
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							### Window Object
+
+							In the console, type window and press enter
+							<p class="fragment">The window object contains all global variables</p>
+							<p class="fragment">window lives in the browser context. There is no window in node.</p>
+							<p class="fragment">node, however, has global</p>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Window Object
+
+							Try this in the browser console
+
+							```js
+								window.document === document
+								window.alert === alert
+							```
+
+							Now try it with node
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Functions
+
+							Functions are reusable blocks of code. To define a function:
+
+							```js
+							> function addSugar() {
+								console.log( 'Sugar!' )
+							}
+
+							addSugar(); // This is called `to invoke` or `to call` a function
+							// Sugar!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Function Arguments
+
+							Functions can have "arguments", which are values (or variables that contain values) for the function.
+
+							```js
+							> function addIngredient( ingredient ) {
+								console.log( 'The Professor adds ' + ingredient + '!' )
+							}
+							> addIngredient( 'Sugar' )
+							The Professor adds Sugar!
+							> addIngredient( 'Spice' )
+							The Professor adds Spice!
+							> addIngredient( 'Everything Nice' )
+							The Professor adds Everything Nice!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Function Arguments
+
+							You can have multiple arguments separated by commas.
+
+							```js
+							> function buildName( first, last ) {
+								console.log( first + ' ' + last + ' says hi.' )
+							}
+							> buildName( 'Fuzzy', 'Lumpkins' )
+							Fuzzy Lumpkins says hi.
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Function return values
+
+							Functions can send something back to the place where they are called using `return`.
+
+							Whatever a function returns will be substituted wherever the function call was placed.
+
+							```js
+							> function buildName( first, last ) {
+								return first + ' ' + last + ' says hi.'
+							}
+							> const phrase = buildName( 'Fuzzy', 'Lumpkins' )
+							> console.log( phrase )
+							Fuzzy Lumpkins says hi.
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Exercise
+
+							<ul>
+								<li>Create a function that takes 3 students and returns an array of students.</p>
+								<li class="fragment">Create a isPPG function that would only return true if the ppg argument is one of the Powerpuff Girls</p>
+								<li class="fragment">Create a function that takes a name, and a number of repetitions, and returns it repeated that many times</p>
+								<li class="fragment">Create a function that takes any number students and returns that as an array</p>
+							</ul>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Function Variables
+
+							Functions are "first-class", meaning their names can be used as a variable (without parenthesis!).
+
+							```js
+							> function buildName( first, last ) {
+								console.log( first + ' ' + last + ' says hi.' )
+							}
+							> buildName
+							[Function: buildName]
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Function Variables
+
+							Functions can also be stored in a variable.
+
+							```js
+							> const sayHi = function buildName( first, last ) {
+								console.log( first + ' ' + last + ' says hi.' )
+							}
+							> sayHi( 'Fuzzy', 'Lumpkins' )
+							Fuzzy Lumpkins says hi.
+
+							> const myFunction = sayHi
+							> myFunction( 'Mojo', 'Jojo' )
+							Mojo Jojo says hi.
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Function Variables
+
+							Functions don't even have to have a name!
+
+							<span class="note">(these are called "anonymous functions")</span>
+
+							```js
+							> const sayHi = function( first, last ) {
+								console.log( first + ' ' + last + ' says hi.' )
+							}
+							> sayHi( 'Fuzzy', 'Lumpkins' )
+							Fuzzy Lumpkins says hi.
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Functions as Object Properties
+
+							Because object properties are just variables, they can also hold functions.
+
+							```js
+							> let chores = {
+								cleanRoom: function() {
+									console.log( 'picking up clothes' )
+								},
+								takeOutTrash: function() {
+									console.log( 'taking out the trash' )
+								},
+							}
+							> chores.cleanRoom()
+							picking up clothes
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Fat-arrow Functions
+
+							Functions can also be defined using a shorthand with the "fat arrow" `=>`  after parenthesis instead of the word `function`.
+
+							```js
+							> const sayHi = ( first, last ) => {
+								console.log( first + ' ' + last + ' says hi.' )
+							}
+							> sayHi( 'Fuzzy', 'Lumpkins' )
+							Fuzzy Lumpkins says hi.
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							<img src="img/ppg-birthday.jpg" width="100%" />
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Functions in real life
+						</textarea>
+					</section>
+
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Fat-arrow Functions
+
+							Short fat-arrow functions can be written on one line more easily.
+
+							```js
+							> const sayHi = ( first, last ) => console.log( first + ' ' + last + ' says hi.' )
+							> sayHi( 'Fuzzy', 'Lumpkins' )
+							Fuzzy Lumpkins says hi.
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Using different ways to define a function
+
+							Different ways to define a function leads to slightly different behavior of your programs. Be mindful.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Hoisting
+
+							An example for such a difference:
+
+							```js
+
+							sayHi(); // Hi, Mojo Jojo!
+							function sayHi() {
+								return 'Hi, Mojo Jojo!';
+							}
+
+							sayBye(); // Error!
+							let sayBye = function() { return 'Bye, Mojo Jojo'; }
+
+							```
+
+							In JavaScript, declarations are moved to the top automatically, so the browser would reverse the order of this code.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variable Scope
+
+							Variables only exist within a "scope".
+
+							Variables declared outside of a function are in the "global scope" can can be used anywhere.
+
+							```js
+							> let alchemist = 'The Professor'
+							> function addIngredient( ingredient ) {
+								console.log( alchemist + ' adds ' + ingredient + '!' )
+							}
+
+							> addIngredient( 'Sugar' )
+							The Professor adds Sugar!
+							> alchemist = 'Mojo Jojo'
+							> addIngredient( 'Snails' )
+							Mojo Jojo adds Snails!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Variable Scope
+
+							Variables declared inside a function only exist within that function.
+
+							```js
+							> function addIngredient( ingredient ) {
+								let alchemist = 'The Professor'
+								console.log( alchemist + ' adds ' + ingredient + '!' )
+							}
+
+							> addIngredient( 'Sugar' )
+							The Professor adds Sugar!
+							> let alchemist = 'Mojo Jojo'
+							> addIngredient( 'Spice' )
+							The Professor adds Spice!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Global variables from inside functions
+
+							```js
+							function mojoBugs() {
+								bugs = 'Mojo Jojo defeats the PPG';
+								window.upsie = 'Mojo Jojo rules the world';
+							}
+							mojoBugs();
+							console.log( bugs );
+							console.log( upsie );
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Conditions
+
+							You can use the `if` statement, followed by a "condition" to control the flow of your program.
+
+							Conditions are true or false.
+
+							```js
+							> function addIngredient( ingredient ) {
+								if ( ingredient === 'Everything Nice' ) {
+									console.log( 'Uh oh!' )
+									ingredient = 'Chemical X'
+								}
+								console.log( 'The Professor adds ' + ingredient + '!' )
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Conditions
+
+							```js
+							> function addIngredient( ingredient ) {
+								if ( ingredient === 'Everything Nice' ) {
+									console.log( 'Uh oh!' )
+									ingredient = 'Chemical X'
+								}
+								console.log( 'The Professor adds ' + ingredient + '!' )
+							}
+
+							> addIngredient( 'Sugar' )
+							The Professor adds Sugar!
+							> addIngredient( 'Spice' )
+							The Professor adds Spice!
+							> addIngredient( 'Everything Nice' )
+							Uh oh!
+							The Professor adds Chemical X!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Conditions
+
+							We can use `===` to compare values in a condition.
+
+							Any statement can be a condition if it is true or false.
+
+							```js
+							> ( 'Mojo' === 'Professor' )
+							false
+							> ( 5 > 3 )
+							true
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Conditions
+
+							Be careful of the difference between `=`, `==`, and `===`.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Conditions
+
+							An exclamation point (`!`) means "not".
+
+							We can use `!==` to look for a false condition.
+
+							```js
+							> ( 'Mojo' !== 'Professor' )
+							true
+							> ( ! 5 > 3 )
+							false
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Conditions
+
+							The `&&` operator means "and".
+
+							The `||` operator means "or".
+
+							```js
+							> let user = 'Mojo Jojo'
+							> ( user === 'Buttercup' || user === 'Bubbles' || user === 'Blossom' )
+							false
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Conditions
+
+							You can use the `else` statement after an `if` to do something if the condition is false.
+
+							```js
+							> function addIngredient( ingredient ) {
+								if ( ingredient === 'Everything Nice' ) {
+									console.log( 'Oh no! The Professor accidentally adds Chemical X!' )
+								} else {
+									console.log( 'The Professor adds ' + ingredient + '!' )
+								}
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Conditions
+
+							You can use `else if` to add more conditions.
+
+							```js
+							> function addIngredient( ingredient ) {
+								if ( ingredient === 'Everything Nice' ) {
+									console.log( 'Oh no! The Professor accidentally adds Chemical X!' )
+								} else if ( ingredient === 'Broccoli' ) {
+									console.log( 'You cannot add Broccoli to this recipe!' )
+								} else {
+									console.log( 'The Professor adds ' + ingredient + '!' )
+								}
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Loops
+
+							Loops let you repeat the same code multiple times until a condition is met.
+
+							```js
+							let bottlesOfBeer = 99
+							while ( bottlesOfBeer > 0 ) {
+								console.log( bottlesOfBeer + ' bottles of beer on the wall' )
+								bottlesOfBeer = bottlesOfBeer - 1
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Loops
+
+							Be careful of infinite loops!
+
+							```js
+							let bottlesOfBeer = 99
+							while ( bottlesOfBeer > 0 ) {
+								console.log( bottlesOfBeer + ' bottles of beer on the wall' )
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### increment and decrement
+
+							```js
+							let bottlesOfBeer = 99
+							bottlesOfBeer++; // 99
+							bottlesOfBeer; // 100
+							++bottlesOfBeer; // 101
+							--bottlesOfBear; // 100
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### for loop
+
+							Exists in many languages and comes from Algol (1958)
+
+							```js
+							for ( let i = 0; i < 10; i++ ) {
+								console.log( i + " men on the dead man's chest --" );
+								console.log( 'Yo ho ho, and a bottle of rum' );
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Exercise on for and arrays
+
+							Edit the previous example for `for` and make it so that it outputs 'Seven men on the...' instead of 7.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Array Iteration with .forEach()
+
+							You can loop over each element of an array using a function.
+
+							```js
+							let powerPuffGirls = ['Buttercup', 'Blossom', 'Bubbles']
+							powerPuffGirls.forEach( function( name ) {
+								console.log( 'The name is ' + name )
+							} )
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Array Iteration with .map()
+
+							`map` is just like `foreEach` but the result is a new array with modified array items
+
+							```js
+							let powerPuffGirls = ['Buttercup', 'Blossom', 'Bubbles']
+							let POWERPUFFGIRLS = powerPuffGirls.map( function( name ) {
+								return name.toUpperCase();
+							} );
+							console.log( POWERPUFFGIRLS );
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Exercise on loops
+
+							1. Write a function that returns an array with the numbers from 3 to 11 by using while loop
+							1. Write a function `range` that returns the numbers from start to end using the while loop
+							1. Write that function with the for loop
+							1. Using the `range` function, write a function called `doubleRange` that returns the squares of the numbers from start to end
+
+							```js
+								doubleRange( 3, 5 ); // [ 9, 16, 25 ]
+							```
+						</textarea>
+					</section>
+				</section>
+
+				<section class="section-web-api">
+
+					<section data-markdown>
+						<textarea data-template>
+							## The Web API
+
+							JavaScript was made to interact with web pages.
+
+							```js
+							function showMojo() {
+								const mojo = window.document.querySelector( '.mojo-jojo' )
+								mojo.style.visibility = 'visible'
+							}
+							// the following goes in the HTML
+							<button onClick="showMojo()">Show Mojo</button>
+							```
+
+							<button onClick="showMojo()">Show Mojo</button>
+
+							<div class="mojo-jojo" style="visibility:hidden">
+								<img src="img/mojo.gif">
+							</div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## if()
+							```js
+							function toggleMojo() {
+								const mojo = document.querySelector( '.mojo-jojo-toggle' )
+								if ( mojo.style.visibility === 'visible' ) {
+									mojo.style.visibility = 'hidden'
+								} else {
+									mojo.style.visibility = 'visible'
+								}
+							}
+							// the following goes in the HTML
+							<button onClick="toggleMojo()">Toggle Mojo</button>
+							```
+
+							<button onClick="toggleMojo()">Toggle Mojo</button>
+
+							<div class="mojo-jojo-toggle" style="visibility:hidden">
+								<img src="img/mojo.gif">
+							</div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Exercise
+
+							<ul>
+								<li class="fragment">Make 3 toggles - one with Bubbles, Buttercup, and Blossom</li>
+								<li class="fragment">Make one button that alters a PPG</li>
+								<li class="fragment">Make the button display a random PPG</li>
+							</li>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## The Web API
+
+							When using JavaScript inside a browser, you can access web things that are not part of the language.
+
+							These are called the "Web API".
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Finding elements
+
+							Many Web API functions are defined on the `window` object.
+
+							Here we use `querySelector()` to find elements on the page.
+
+							```js
+							window.document.querySelector( '.mojo-jojo' )
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Finding elements
+
+							If you are familiar with CSS, `querySelector()` accepts one argument: a string which is a CSS selector.
+
+							Here we are asking for the first element that has the `class` (that's the period) of `mojo-jojo`.
+
+							```js
+							window.document.querySelector( '.mojo-jojo' )
+							```
+
+							Which finds this:
+
+							```html
+							<img class="mojo-jojo" src="img/mojo.gif">
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Finding elements
+
+							What if the element is not found?
+
+							`querySelector()` can return `null` if it fails to find an element.
+
+							```js
+							> window.document.querySelector( '.fuzzy-lumpkins' )
+							null
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Finding elements
+
+							What if you want to find multiple elements?
+
+							`querySelectorAll()` returns an array-like object of all the matches.
+
+							```js
+							> const allSpans = window.document.querySelectorAll( 'span' )
+							> allSpans.length
+							350
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Finding elements
+
+							There are other functions to find elements.
+
+							```js
+							window.document.getElementById( 'my-id' )
+							window.document.getElementsByTagName( 'span' )
+							window.document.getElementsByClassName( 'mojo-jojo' )
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							The browser keeps an internal representation of what you see on the page.
+
+							This is called the _Document Object Model_ or DOM.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							Each element of the page that you access is called a "DOM Node".
+
+							Here, the variable `mojo` holds a DOM Node object.
+
+							```js
+							const mojo = window.document.querySelector( '.mojo-jojo' )
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							DOM Node objects have properties, like `style`.
+
+							`style` is an object that holds CSS as properties.
+
+							```js
+							> const mojo = window.document.querySelector( '.mojo-jojo' )
+							> mojo.style.visibility
+							'hidden'
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							We can change properties on DOM Nodes, and the changes usually take effect immediately.
+
+							```js
+							> const mojo = window.document.querySelector( '.mojo-jojo' )
+							> mojo.style.visibility
+							'hidden'
+							> mojo.style.visibility = 'visible'
+							> mojo.style.visibility
+							'visible'
+							```
+							<div class="fragment">
+								<img src="img/mojo.gif">
+							</div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							If you want to access a CSS property that has a hyphen in the name, change it to camelCase.
+
+							```js
+							// This is for the CSS property `margin-top`
+							> mojo.style.marginTop
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							We can change HTML properties also.
+
+							```js
+							> const mojo = window.document.querySelector( '.mojo-jojo' )
+							> mojo.src
+							'img/mojo.gif'
+							> mojo.src = 'img/blossom.png'
+							```
+							<button onClick="transformMojo()">Transform!</button>
+
+							<div class="mojo-jojo-transform">
+								<img src="img/mojo.gif">
+							</div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							We can actually change all the contents of an element using the `innerHTML` property.
+
+							```js
+							> const mojo = window.document.querySelector( '.mojo-jojo' )
+							> mojo.innerHTML = '<em>Curses!</em>'
+							```
+
+							<button onClick="changeMojoSaying()">Defeat Mojo</button>
+
+							<div class="mojo-saying">I, Mojo Jojo, am your master.</div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							It's also possible to create new Nodes!
+
+							<span class="note">`window.document.body` is the Node that contains the HTML body.</note>
+
+							```js
+							> const blossom = window.document.createElement( 'img' )
+							> blossom.src = 'img/blossom.png'
+							> window.document.body.appendChild( blossom )
+							```
+
+							<button onClick="createPowerpuff()">Create Powerpuff</button>
+
+							<div class="create-powerpuff" style="height:300px;"></div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### DOM Nodes
+
+							If you want to create a Node that's just text, use `createTextNode()`
+
+							```js
+							> const bubbles = window.document.createTextNode( 'I am the joy and the laughter' )
+							> window.document.body.appendChild( bubbles )
+							```
+
+							<button onClick="createBubbles()">Create Bubbles</button>
+
+							<div class="create-bubbles"></div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Exercise
+
+							1. Create a page that has Bubbles 25 times.
+							1. Create a function that updates Bubbles to Buttercup 25 times
+							1. Create a function that adds a 3px colorful border to each image
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Events
+
+							When something happens on a web page (eg: when a user clicks a button), an _Event_ is created.
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Events
+
+							Events are objects with information about what happened.
+
+							There are two ways to listen to events: `element.addEventListener()` in JavaScript and `on...` in the HTML.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Events
+
+							Using HTML we can register a click handler as follows:
+
+							```html
+							<button onClick="getSnacks()">Get Snacks</button>
+							```
+
+							<button onClick="getSnacks()">Get Snacks</button>
+
+							<div class="get-snacks" style="height:300px"></div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Events
+
+							Here's the JavaScript for that click handler.
+
+							```js
+							function getSnacks() {
+								const parent = window.document.querySelector( '.get-snacks' )
+								const blossom = window.document.createElement( 'img' )
+								blossom.src = 'img/ppg-chopsticks.jpg'
+								parent.appendChild( blossom )
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Events
+
+							You can also add the click handler function in pure JavaScript.
+
+							```js
+							const button = window.document.querySelector( '.get-snacks-button' )
+							button.addEventListener( 'click', getSnacks )
+							```
+							 Notice that we are passing `getSnacks` as a variable! We are not calling it here, but sending it to be called later. This is called a "callback".
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Events
+
+							Clicks are common events, but there are many others.
+
+							- `mouseover`: when a cursor is moved on to an element
+							- `mouseout`: when a cursor is moved off of an element
+							- `keyup`: when a key is released
+							- `load`: when the document finishes loading
+							- `focus`: when an element gets focus
+							- `blur`: when an element loses focus
+							- ...
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Exercise
+							#### Mojo is dressed up as the Professor!
+
+							Create a page with Professor's photo
+							When the cursor is on it, make it swap with Mojo Jojo.
+							When you click on it, the day was saved by the PPG!
+						</textarea>
+					</section>
+
+
+					<section data-markdown>
+						<textarea data-template>
+							### Form input
+
+							You can use `.value` to get the input from a form field.
+
+							Try this:
+
+							```html
+							<script>
+								function showValue() {
+									alert( document.getElementById('myName').value )
+								}
+							</script>
+							<form>
+								<input type="text" id="myName" value="hi" />
+								<input type="button" onclick="showValue()" value="click me">
+							</form>
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Form input
+							You can also access forms by using the global `document.forms`
+
+
+							```html
+							<script>
+								function showValue() {
+									alert( document.forms[0][0].value );
+								}
+							</script>
+							<form>
+								<input type="text" id="myName" value="hi" />
+								<input type="button" onclick="showValue()" value="click me">
+							</form>
+							```
+							<script>
+							</script>
+							<form>
+								<input type="text" id="myName" value="hi" />
+								<input type="button" onclick="showValue()" value="click me">
+							</form>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Exercise
+
+							Use the previous example to create a form that has Name and Age.
+
+							1. Age can be numbers only.
+							Name can be latin letters and spaces only.
+
+							In case of an error, display: "You have an error!" next to the form field.
+
+							2. Make sure the name field only allows names in the format:
+
+							First name Last name. First and last name are capitalized.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Pattern matching with regexp
+
+							JavaScript have access to powerful string methods using Regular Expressions
+
+							This is an example using .match
+							```js
+							<script>
+							console.log( 'Mojo Jojo'.match(/^[a-z ]+$/i) )
+							console.log( '123'.match(/^\d+$/) )
+							</script>
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Replace
+
+							```js
+							<script>
+							console.log( 'Jojo Jojo'.replace( 'oj', 'aj' ) )
+							</script>
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Exercise
+
+							We have this text:
+							'Mojo Jojo Jojo Jojo Mojo Jojo Mojo Jojo Mojo Jojo Jojo Jojo'
+
+							Use replace to make all Mojo Jojos Bubbles, then all Bubbles Jojos - Buttercup.
+						</textarea>
+					</section>
+				</section>
+
+				</section>
+
+				<section class="section-binding-and-proto">
+
+					<section data-markdown>
+						<textarea data-template>
+							## Prototypes
+
+							When you access a property on an Object, and it does not exist, JavaScript will look at the Object's _prototype_.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Using Prototypes
+
+							Here's what it looks like without a prototype:
+
+							```js
+							> const buttercup = {}
+							> buttercup.fight()
+							TypeError: buttercup.fight is not a function
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Using Prototypes
+
+							A prototype is a special part of an Object.
+
+							If set to another object, the properties of the prototype will act sort-of like "defaults" for the Object.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Using Prototypes
+
+							When you access a property on an Object, and it does not exist, JavaScript will look for that property on the Object's prototype.
+
+							If the prototype also does not have the property, JavaScript will check _that object's prototype_.
+
+							This is called "Prototypal Inheritance" and is the only kind of Inheritance in JavaScript.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Using Prototypes
+
+							To create an Object with a prototype, use `Object.create()`
+
+							```js
+							> const fighter = {
+								fight: function() {
+									console.log( 'lazer eyes!' )
+								},
+							}
+							> const buttercup = Object.create( fighter )
+							> buttercup.fight()
+							lazer eyes!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Using Prototypes
+
+							There's another, more common way to create an Object with a prototype, but it is more complex.
+
+							The _mysterious_ `new` keyword.
+
+							```js
+							> const Fighter = function() {}
+							> Fighter.prototype = {
+								fight: function() {
+									console.log( 'lazer eyes!' )
+								},
+							}
+							> const buttercup = new Fighter()
+							> buttercup.fight()
+							lazer eyes!
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Using Prototypes
+
+							`new` does three things and still uses prototypes exactly the same way, but it makes it look like Classical Inheritance.
+
+							1. Create a new object.
+							2. Assign the `prototype` property of the target as the Prototype of the new object.
+							3. Run the "constructor function" (don't ask about the return value).
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Using Prototypes
+
+							A fancy third way to use `new` (but it does exactly the same thing):
+
+							```js
+							> class Fighter {
+								fight() {
+									console.log( 'lazer eyes!' )
+								}
+							}
+							> const buttercup = new Fighter()
+							> buttercup.fight()
+							lazer eyes!
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Function Binding
+
+							There is a special read-only variable that any function can use called `this`.
+
+							`this` is automatically set to something, depending on how the function is called.
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### this
+
+							<div class="center">🐉 Here be dragons 🐉</div>
+
+							Until you understand `this`, be careful using it.
+
+							We'll explain it anyway, but don't worry if it seems bizarre.
+
+							It is.
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### this
+
+							It doesn't matter where the function is defined (written)!
+
+							It generally only matters where and how it was called.
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### this
+
+							```js
+							function foo() {
+								console.log( this.a )
+							}
+
+							let obj = {
+								a: 2,
+								foo: foo,
+							}
+
+							obj.foo() // 2
+							```
+
+							If a function is called after a period, then `this` inside the function will refer to the object that came before the period.
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### this
+
+							```js
+							function foo() {
+								console.log( this.a )
+							}
+
+							let a = 2
+							foo() // undefined
+							```
+
+							If a function is called without a period, then `this` inside the function will be the `window` Object (in a browser).
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### this
+
+							When calling a function, you can use `call()` or `apply()` to explicitly set `this` to something else.
+
+							```js
+							function foo() {
+								console.log( this.a )
+							}
+
+							let obj = {
+								a: 2,
+							}
+
+							foo.call( obj ) // 2
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### this
+
+							When _defining_ a function, you can use `bind()` to explicitly set `this` to something else.
+
+							```js
+							function foo() {
+								console.log( this.a )
+							}
+
+							let obj = {
+								a: 2,
+							}
+
+							const boundFoo = foo.bind( obj )
+							boundFoo() // 2
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### this
+
+							When _defining_ a function, you can use the "fat arrow" notation to automatically bind `this` to whatever `this` is where the function is defined.
+
+							```js
+							function makeFoo() {
+								return () => {
+									console.log( this.a )
+								}
+							}
+
+							let obj = {
+								a: 2,
+							}
+
+							const foo = makeFoo.call( obj )
+							foo() // 2
+							```
+						</textarea>
+					</section>
+
+				</section>
+
+				<section class="section-npm">
+
+					<section data-markdown>
+						<textarea data-template>
+							## Modules
+
+							To share functions with other projects, JavaScript can be packaged into _modules_.
+
+							There are several ways to do this, but you will probably see a lot of this:
+
+							```js
+							import React from 'react'
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### import
+							```js
+							import React from 'react'
+							```
+
+							This imports the "default" export from the module called `react`.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### export
+							If you save this into a file called 'say-goodbye':
+
+							```js
+							export default function sayGoodbye() {
+								console.log( 'Once again, the day is saved!' )
+							}
+							```
+
+							Then you can import it in another file in the same directory:
+
+							```js
+							import sayGoodbye from './say-goodbye'
+							sayGoodbye() // Once again, the day is saved!
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### export
+
+							You can export multiple things by excluding `default`:
+
+							```js
+							export function sayHi() {
+								console.log( 'The city of Townsville.' )
+							}
+							export function sayGoodbye() {
+								console.log( 'Once again, the day is saved!' )
+							}
+							```
+
+							Then you can import it by name in another file in the same directory:
+
+							```js
+							import { sayGoodbye, sayHi } from './say-goodbye'
+							sayGoodbye() // Once again, the day is saved!
+							sayHi() // The city of Townsville.
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### module names
+
+							Notice that you can skip adding the `.js` to the file name.
+
+							```js
+							import sayGoodbye  from './say-goodbye'
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### npm
+
+							There is a special program used to manage modules in JavaScript called `npm`.
+
+							("node package manager", although it is not only for node)
+
+							To install a package named `react`, just type:
+
+							```bash
+							npm install react
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### npm
+
+							Modules installed using `npm` are put in a directory called `node_modules`.
+
+							To import a module installed using `npm`, you can skip adding the `./` at the beginning.
+
+							```js
+							import React from 'react'
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### npm
+
+							Anyone can publish a module on npm!
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### package.json
+
+							Every JavaScript project can have a special file called `package.json` which contains information about that project.
+
+							You can create one automatically by typing:
+
+							```bash
+							npm init
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### package.json
+
+							Once you have a package.json file, you can _save_ information about any module you install, so that other people using your project know that the installed module is required.
+
+							```bash
+							npm install --save react
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### package.json
+
+							To automatically install all the saved modules in a package.json file, just type:
+
+							```bash
+							npm install
+							```
+
+							You'll usually need to do this when first working on someone else's project.
+
+						</textarea>
+					</section>
+
+				</section>
+
+				<section class="section-binding-and-proto">
+
+					<section data-markdown>
+						<textarea data-template>
+							## Calypso
+
+							<div class="center">
+								https://github.com/Automattic/wp-calypso
+							</div>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Starting Calypso
+
+							Calypso is both a web app _and_ includes a web server so that you can run it locally.
+
+							```bash
+							npm start
+							```
+
+							(⌛️ this takes a while!)
+
+							Then you can visit http://calypso.localhost:3000
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Components
+
+							```js
+import React, { PropTypes, PureComponent } from 'react';
+
+export class VerticalMenu extends PureComponent {
+    static propTypes = {
+        onClick: PropTypes.func,
+        initalItemIndex: PropTypes.number,
+        children: PropTypes.arrayOf(
+            PropTypes.element
+        )
+    }
+
+    static defaultProps = {
+        initialItemIndex: 0,
+        onClick: identity
+    }
+
+    constructor( props ) {
+        super( props );
+
+        this.state = {
+            selectedIndex: props.initialItemIndex
+        };
+    }
+
+    render() { 
+        const { children } = this.props; 
+        const { selectedIndex } = this.state;
+
+        return (
+            <div className="vertical-menu">
+                { React.Children.map( children, ( Item, index ) => (
+                    React.cloneElement( Item, {
+                        isSelected: index === selectedIndex,
+                        onClick: partial( this.select, index )
+                    } )
+                ) ) }
+            </div>
+        );
+    }
+}
+							```
+						</textarea>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				],
+				history: true,
+			});
+
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+				resetDynamicSlides();
+			} );
+		</script>
+	</body>
+</html>
