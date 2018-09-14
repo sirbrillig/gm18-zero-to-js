@@ -650,38 +650,6 @@ undefined
 
 					<section data-markdown>
 						<textarea data-template>
-							#### Variable Conditions
-
-							You can use the `if` statement on a variable to decide what to do.
-
-							```js
-							> let myName = 'Mojo';
-							> if ( myName === 'Mojo' ) {
-							>	console.log( 'It is you, Mojo Jojo!' );
-							> }
-							It is you, Mojo Jojo!
-							```
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							#### Variable Conditions
-
-							The `if` statement must be followed by a condition in parenthesis and then curly braces around what you want to do if the condition is true.
-
-							```js
-							> let myName = 'Mojo';
-							> if ( myName === 'Mojo' ) {
-							>	console.log( 'It is you, Mojo Jojo!' );
-							> }
-							It is you, Mojo Jojo!
-							```
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
 							### Variable Names
 
 							Choose good variable names.
@@ -1396,22 +1364,22 @@ undefined
 					</section>
 				</section>
 
-				<section class="section-condtions">
+				<section class="section-conditions">
 					<section data-markdown>
 						<textarea data-template>
 							#### Conditions
 
-							You can use the `if` statement, followed by a "condition" to control the flow of your program.
+							You can use the `if` statement, followed by a "condition" to control what your program does.
 
-							Conditions are true or false.
+							Conditions must always be true or false.
 
 							```js
 							> function addIngredient( ingredient ) {
 								if ( ingredient === 'Everything Nice' ) {
-									console.log( 'Uh oh!' )
-									ingredient = 'Chemical X'
+									console.log( 'Uh oh!' );
+									ingredient = 'Chemical X';
 								}
-								console.log( 'The Professor adds ' + ingredient + '!' )
+								console.log( 'The Professor adds ' + ingredient + '!' );
 							}
 							```
 						</textarea>
@@ -1424,17 +1392,17 @@ undefined
 							```js
 							> function addIngredient( ingredient ) {
 								if ( ingredient === 'Everything Nice' ) {
-									console.log( 'Uh oh!' )
-									ingredient = 'Chemical X'
+									console.log( 'Uh oh!' );
+									ingredient = 'Chemical X';
 								}
-								console.log( 'The Professor adds ' + ingredient + '!' )
+								console.log( 'The Professor adds ' + ingredient + '!' );
 							}
 
-							> addIngredient( 'Sugar' )
+							> addIngredient( 'Sugar' );
 							The Professor adds Sugar!
-							> addIngredient( 'Spice' )
+							> addIngredient( 'Spice' );
 							The Professor adds Spice!
-							> addIngredient( 'Everything Nice' )
+							> addIngredient( 'Everything Nice' );
 							Uh oh!
 							The Professor adds Chemical X!
 							```
@@ -1450,9 +1418,9 @@ undefined
 							Any statement can be a condition if it is true or false.
 
 							```js
-							> ( 'Mojo' === 'Professor' )
+							> ( 'Mojo' === 'Professor' );
 							false
-							> ( 5 > 3 )
+							> ( 5 > 3 );
 							true
 							```
 						</textarea>
@@ -1463,6 +1431,10 @@ undefined
 							#### Conditions
 
 							Be careful of the difference between `=`, `==`, and `===`.
+
+							- `=` assigns a value to a variable.
+							- `==` tests equality of values.
+							- `===` tests equality of values and types.
 						</textarea>
 					</section>
 
@@ -1470,14 +1442,14 @@ undefined
 						<textarea data-template>
 							#### Conditions
 
-							An exclamation point (`!`) means "not".
+							An exclamation point (`!`) means "not" and reverses the meaning of a condition.
 
 							We can use `!==` to look for a false condition.
 
 							```js
-							> ( 'Mojo' !== 'Professor' )
+							> ( 'Mojo' !== 'Professor' );
 							true
-							> ( ! 5 > 3 )
+							> ( ! 5 > 3 );
 							false
 							```
 						</textarea>
@@ -1492,8 +1464,8 @@ undefined
 							The `||` operator means "or".
 
 							```js
-							> let user = 'Mojo Jojo'
-							> ( user === 'Buttercup' || user === 'Bubbles' || user === 'Blossom' )
+							> let user = 'Mojo Jojo';
+							> ( user === 'Buttercup' || user === 'Bubbles' || user === 'Blossom' );
 							false
 							```
 						</textarea>
@@ -1508,9 +1480,9 @@ undefined
 							```js
 							> function addIngredient( ingredient ) {
 								if ( ingredient === 'Everything Nice' ) {
-									console.log( 'Oh no! The Professor accidentally adds Chemical X!' )
+									console.log( 'Oh no! The Professor accidentally adds Chemical X!' );
 								} else {
-									console.log( 'The Professor adds ' + ingredient + '!' )
+									console.log( 'The Professor adds ' + ingredient + '!' );
 								}
 							}
 							```
@@ -1526,11 +1498,11 @@ undefined
 							```js
 							> function addIngredient( ingredient ) {
 								if ( ingredient === 'Everything Nice' ) {
-									console.log( 'Oh no! The Professor accidentally adds Chemical X!' )
+									console.log( 'Oh no! The Professor accidentally adds Chemical X!' );
 								} else if ( ingredient === 'Broccoli' ) {
-									console.log( 'You cannot add Broccoli to this recipe!' )
+									console.log( 'You cannot add Broccoli to this recipe!' );
 								} else {
-									console.log( 'The Professor adds ' + ingredient + '!' )
+									console.log( 'The Professor adds ' + ingredient + '!' );
 								}
 							}
 							```
