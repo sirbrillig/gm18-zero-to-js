@@ -1027,21 +1027,111 @@ undefined
 							Now try it with node.
 						</textarea>
 					</section>
+					</section>
+
+				<section class="section-thinking-like-program">
+					<section data-markdown>
+						<textarea data-template>
+							#### Functions
+
+							Functions are reusable blocks of code.
+
+							Use functions to repeat instructions or to make instructions easier to read.
+
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="100" y="20" font-family="Verdana" font-size="14" fill="black">
+									<tspan x="100">1. ...</tspan>
+									<tspan x="100" dy="20">2. ...</tspan>
+									<tspan x="100" dy="20">3. ...</tspan>
+								</text>
+							</svg>
+
+						</textarea>
+					</section>
 
 					<section data-markdown>
 						<textarea data-template>
 							#### Functions
 
-							Functions are reusable blocks of code. To define a function:
+							Most functions have a variable pointing to them with a descriptive name, just like any other value.
+
+							(If there is no name, it's called an "anonymous" function.)
+
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">makeTea ➡</text>
+								<text x="100" y="20" font-family="Verdana" font-size="14" fill="black">
+									<tspan x="100">1. ...</tspan>
+									<tspan x="100" dy="20">2. ...</tspan>
+									<tspan x="100" dy="20">3. ...</tspan>
+								</text>
+							</svg>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Exercise on Function Concepts 1
+
+							1. Write instructions on a piece of paper, describing how to fetch a cup of water.
+							2. Hand the paper to someone and they execute the instructions.
+
+							The paper is a function and its instructions can be followed multiple times by different people.
+
+							You can pass the function to others by handing them the paper.
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Functions
+
+							Functions are reusable blocks of code. To define a function, write this form:
+
+							`function NAME() {}`
+
+							Put the instructions inside the curly braces.
+
+							```js
+							> function addSugar() {
+								console.log( 'Sugar!' );
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Functions
+
+							To execute ("call") a function, write the function name followed by parenthesis.
+
+							`NAME();`
 
 							```js
 							> function addSugar() {
 								console.log( 'Sugar!' );
 							}
 
-							addSugar(); // This is called `to invoke` or `to call` a function
-							// Sugar!
+							> addSugar();
+							Sugar!
 							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Exercise on Function Concepts 2
+
+							1. Change instructions on paper to explain how to fetch anything (call it `THING`).
+							2. On another piece of paper write `THING = ` and something to fetch.
+							2. Hand both papers to someone and they follow the instructions, replacing `THING` with whatever the other paper says.
+
+							The second paper is a function "argument". It's a variable!
+
 						</textarea>
 					</section>
 
@@ -1049,17 +1139,19 @@ undefined
 						<textarea data-template>
 							#### Function Arguments
 
-							Functions can have "arguments", which are values (or variables that contain values) for the function.
+							Functions can have "arguments", which are values for the function to use.
+
+							They are stored in variables that are put in the parenthesis when the function is defined.
 
 							```js
 							> function addIngredient( ingredient ) {
-								console.log( 'The Professor adds ' + ingredient + '!' )
+								console.log( 'The Professor adds ' + ingredient + '!' );
 							}
-							> addIngredient( 'Sugar' )
+							> addIngredient( 'Sugar' );
 							The Professor adds Sugar!
-							> addIngredient( 'Spice' )
+							> addIngredient( 'Spice' );
 							The Professor adds Spice!
-							> addIngredient( 'Everything Nice' )
+							> addIngredient( 'Everything Nice' );
 							The Professor adds Everything Nice!
 							```
 						</textarea>
@@ -1073,13 +1165,27 @@ undefined
 
 							```js
 							> function buildName( first, last ) {
-								console.log( first + ' ' + last + ' says hi.' )
+								console.log( first + ' ' + last + ' says hi.' );
 							}
-							> buildName( 'Fuzzy', 'Lumpkins' )
+							> buildName( 'Fuzzy', 'Lumpkins' );
 							Fuzzy Lumpkins says hi.
 							```
 						</textarea>
 					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Exercise on Function Concepts 3
+
+							1. Write down instructions on paper to add two numbers.
+							2. Have someone execute the instructions and write down the result on another piece of paper.
+							3. When they are done, have them give the other paper back to you.
+
+							The other paper (the result) is a function "return value". It's a variable also!
+
+						</textarea>
+					</section>
+
 
 					<section data-markdown>
 						<textarea data-template>
@@ -1087,44 +1193,13 @@ undefined
 
 							Functions can send something back to the place where they are called using `return`.
 
-							Whatever a function returns will be substituted wherever the function call was placed.
-
 							```js
 							> function buildName( first, last ) {
-								return first + ' ' + last + ' says hi.'
+								return first + ' ' + last + ' says hi.';
 							}
-							> const phrase = buildName( 'Fuzzy', 'Lumpkins' )
-							> console.log( phrase )
+							> const phrase = buildName( 'Fuzzy', 'Lumpkins' );
+							> console.log( phrase );
 							Fuzzy Lumpkins says hi.
-							```
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							#### Exercise
-
-							<ul>
-								<li>Create a function that takes 3 students and returns an array of students.</p>
-								<li class="fragment">Create a isPPG function that would only return true if the ppg argument is one of the Powerpuff Girls</p>
-								<li class="fragment">Create a function that takes a name, and a number of repetitions, and returns it repeated that many times</p>
-								<li class="fragment">Create a function that takes any number students and returns that as an array</p>
-							</ul>
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							#### Function Variables
-
-							Functions are "first-class", meaning their names can be used as a variable (without parenthesis!).
-
-							```js
-							> function buildName( first, last ) {
-								console.log( first + ' ' + last + ' says hi.' )
-							}
-							> buildName
-							[Function: buildName]
 							```
 						</textarea>
 					</section>
@@ -1133,35 +1208,71 @@ undefined
 						<textarea data-template>
 							#### Function Variables
 
-							Functions can also be stored in a variable.
+							Functions names can be used just like any variable.
 
 							```js
-							> const sayHi = function buildName( first, last ) {
-								console.log( first + ' ' + last + ' says hi.' )
+							> function makeTea( first, last ) {}
+							> makeTea;
+							[Function: makeTea]
+							```
+
+							<svg width="200" height="80">
+								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">makeTea ➡</text>
+								<text x="100" y="20" font-family="Verdana" font-size="14" fill="black">
+									<tspan x="100">1. ...</tspan>
+									<tspan x="100" dy="20">2. ...</tspan>
+									<tspan x="100" dy="20">3. ...</tspan>
+								</text>
+							</svg>
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Function Variables
+
+							Like other values, you can have multiple variables pointing to the same function.
+
+							```js
+							> function sayHi( first, last ) {
+								console.log( first + ' ' + last + ' says hi.' );
 							}
-							> sayHi( 'Fuzzy', 'Lumpkins' )
+							> sayHi( 'Fuzzy', 'Lumpkins' );
 							Fuzzy Lumpkins says hi.
 
-							> const myFunction = sayHi
-							> myFunction( 'Mojo', 'Jojo' )
+							> const greet = sayHi;
+							> greet( 'Mojo', 'Jojo' );
 							Mojo Jojo says hi.
 							```
+
+							<svg width="200" height="80">
+								<rect x="100" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="37" y="20" font-family="Verdana" font-size="14" fill="white">sayHi ➡</text>
+								<text x="38" y="20" dy="20" font-family="Verdana" font-size="14" fill="white">greet ➡</text>
+								<text x="120" y="20" font-family="Verdana" font-size="14" fill="black">
+									<tspan x="120">1. ...</tspan>
+									<tspan x="120" dy="20">2. ...</tspan>
+									<tspan x="120" dy="20">3. ...</tspan>
+								</text>
+							</svg>
 						</textarea>
 					</section>
 
 					<section data-markdown>
 						<textarea data-template>
-							#### Function Variables
+							#### Anonymous Functions
 
-							Functions don't even have to have a name!
+							Functions don't have to have a name, but you need to put them in a variable to use them.
 
-							<span class="note">(these are called "anonymous functions")</span>
+							<span class="note">This is basically the same as giving them a name.</span>
 
 							```js
 							> const sayHi = function( first, last ) {
-								console.log( first + ' ' + last + ' says hi.' )
+								console.log( first + ' ' + last + ' says hi.' );
 							}
-							> sayHi( 'Fuzzy', 'Lumpkins' )
+							> sayHi( 'Fuzzy', 'Lumpkins' );
 							Fuzzy Lumpkins says hi.
 							```
 						</textarea>
@@ -1176,13 +1287,13 @@ undefined
 							```js
 							> let chores = {
 								cleanRoom: function() {
-									console.log( 'picking up clothes' )
+									console.log( 'picking up clothes' );
 								},
 								takeOutTrash: function() {
-									console.log( 'taking out the trash' )
+									console.log( 'taking out the trash' );
 								},
-							}
-							> chores.cleanRoom()
+							};
+							> chores.cleanRoom();
 							picking up clothes
 							```
 						</textarea>
@@ -1192,7 +1303,7 @@ undefined
 						<textarea data-template>
 							#### Fat-arrow Functions
 
-							Functions can also be defined using a shorthand with the "fat arrow" `=>`  after parenthesis instead of the word `function`.
+							Anonymous functions can also be defined using a shorthand with the "fat arrow" `=>`  after parenthesis instead of the word `function`.
 
 							```js
 							> const sayHi = ( first, last ) => {
