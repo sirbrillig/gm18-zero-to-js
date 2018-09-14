@@ -1027,9 +1027,9 @@ undefined
 							Now try it with node.
 						</textarea>
 					</section>
-					</section>
+				</section>
 
-				<section class="section-thinking-like-program">
+				<section class="section-functions">
 					<section data-markdown>
 						<textarea data-template>
 							#### Functions
@@ -1271,7 +1271,7 @@ undefined
 							```js
 							> const sayHi = function( first, last ) {
 								console.log( first + ' ' + last + ' says hi.' );
-							}
+							};
 							> sayHi( 'Fuzzy', 'Lumpkins' );
 							Fuzzy Lumpkins says hi.
 							```
@@ -1303,30 +1303,17 @@ undefined
 						<textarea data-template>
 							#### Fat-arrow Functions
 
-							Anonymous functions can also be defined using a shorthand with the "fat arrow" `=>`  after parenthesis instead of the word `function`.
+							Anonymous functions can also be defined using a shorthand with the "fat arrow" `=>`  _after_ the parenthesis instead of using the word `function`.
 
 							```js
 							> const sayHi = ( first, last ) => {
-								console.log( first + ' ' + last + ' says hi.' )
-							}
-							> sayHi( 'Fuzzy', 'Lumpkins' )
+								console.log( first + ' ' + last + ' says hi.' );
+							};
+							> sayHi( 'Fuzzy', 'Lumpkins' );
 							Fuzzy Lumpkins says hi.
 							```
 						</textarea>
 					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							<img src="img/ppg-birthday.jpg" width="100%" />
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							### Functions in real life
-						</textarea>
-					</section>
-
 
 					<section data-markdown>
 						<textarea data-template>
@@ -1334,41 +1321,13 @@ undefined
 
 							Short fat-arrow functions can be written on one line more easily.
 
-							```js
-							> const sayHi = ( first, last ) => console.log( first + ' ' + last + ' says hi.' )
-							> sayHi( 'Fuzzy', 'Lumpkins' )
-							Fuzzy Lumpkins says hi.
-							```
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							#### Using different ways to define a function
-
-							Different ways to define a function leads to slightly different behavior of your programs. Be mindful.
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							#### Hoisting
-
-							An example for such a difference:
+							<span class="note">They return the result of the statement.</span>
 
 							```js
-
-							sayHi(); // Hi, Mojo Jojo!
-							function sayHi() {
-								return 'Hi, Mojo Jojo!';
-							}
-
-							sayBye(); // Error!
-							let sayBye = function() { return 'Bye, Mojo Jojo'; }
-
+							> const getGreeting = ( name ) => 'Hi ' + name;
+							> console.log( getGreeting( 'Fuzzy' ) );
+							Hi Fuzzy
 							```
-
-							In JavaScript, declarations are moved to the top automatically, so the browser would reverse the order of this code.
 						</textarea>
 					</section>
 
@@ -1376,22 +1335,42 @@ undefined
 						<textarea data-template>
 							#### Variable Scope
 
-							Variables only exist within a "scope".
+							Variables only exist within a "scope". This is an area of code where the function is allowed to be used.
 
-							Variables declared outside of a function are in the "global scope" can can be used anywhere.
+							<svg width="200" height="80">
+								<rect x="10" y="0" width="200" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="20" y="20" font-family="Verdana" font-size="14" fill="black">let myName</text>
+								<text x="20" y="40" font-family="Verdana" font-size="14" fill="black">log(myName)</text>
+								<text text-anchor="end" x="150" y="40" font-family="Verdana" font-size="14" fill="green">✅</text>
+							</svg>
+						</textarea>
+					</section>
 
-							```js
-							> let alchemist = 'The Professor'
-							> function addIngredient( ingredient ) {
-								console.log( alchemist + ' adds ' + ingredient + '!' )
-							}
+					<section data-markdown>
+						<textarea data-template>
+							#### Variable Scope
 
-							> addIngredient( 'Sugar' )
-							The Professor adds Sugar!
-							> alchemist = 'Mojo Jojo'
-							> addIngredient( 'Snails' )
-							Mojo Jojo adds Snails!
-							```
+							- Variables declared _outside_ of a function can be used inside a function.
+							- Variables declared _inside_ a function only exist within that function.
+
+							<svg width="200" height="100">
+								<rect x="0" y="0" width="200" height="100" style="fill:rgb(255,255,255);stroke-width:2;stroke:rgb(0,0,0)" />
+								<rect x="10" y="30" width="180" height="60" style="fill:rgba(255,255,255,0);stroke-width:2;stroke:rgb(0,0,0)" />
+								<text text-anchor="end" x="190" y="27" font-family="fixed" font-size="12" fill="black">function</text>
+								<text x="20" y="20" font-family="Verdana" font-size="14" fill="black">let myName</text>
+								<text x="30" y="50" font-family="Verdana" font-size="14" fill="black">log(myName)</text>
+								<text text-anchor="end" x="150" y="50" font-family="Verdana" font-size="14" fill="green">✅</text>
+							</svg>
+
+							<svg width="200" height="100">
+								<rect x="0" y="0" width="200" height="100" style="fill:rgb(255,255,255);stroke-width:2;stroke:rgb(0,0,0)" />
+								<rect x="10" y="13" width="180" height="50" style="fill:rgba(255,255,255,0);stroke-width:2;stroke:rgb(0,0,0)" />
+								<text text-anchor="end" x="190" y="10" font-family="fixed" font-size="12" fill="black">function</text>
+								<text x="30" y="30" font-family="Verdana" font-size="14" fill="black">let myName</text>
+								<text x="20" y="90" font-family="Verdana" font-size="14" fill="black">log(myName)</text>
+								<text text-anchor="end" x="140" y="92" font-family="Verdana" font-size="14" fill="red">❌</text>
+							</svg>
+
 						</textarea>
 					</section>
 
@@ -1403,35 +1382,21 @@ undefined
 
 							```js
 							> function addIngredient( ingredient ) {
-								let alchemist = 'The Professor'
-								console.log( alchemist + ' adds ' + ingredient + '!' )
+								let alchemist = 'The Professor';
+								console.log( alchemist + ' adds ' + ingredient + '!' );
 							}
 
-							> addIngredient( 'Sugar' )
+							> addIngredient( 'Sugar' );
 							The Professor adds Sugar!
-							> let alchemist = 'Mojo Jojo'
-							> addIngredient( 'Spice' )
+							> let alchemist = 'Mojo Jojo';
+							> addIngredient( 'Spice' );
 							The Professor adds Spice!
 							```
 						</textarea>
 					</section>
+				</section>
 
-					<section data-markdown>
-						<textarea data-template>
-							#### Global variables from inside functions
-
-							```js
-							function mojoBugs() {
-								bugs = 'Mojo Jojo defeats the PPG';
-								window.upsie = 'Mojo Jojo rules the world';
-							}
-							mojoBugs();
-							console.log( bugs );
-							console.log( upsie );
-							```
-						</textarea>
-					</section>
-
+				<section class="section-condtions">
 					<section data-markdown>
 						<textarea data-template>
 							#### Conditions
