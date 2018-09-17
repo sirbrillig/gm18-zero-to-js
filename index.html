@@ -1649,6 +1649,45 @@ undefined
 							```
 						</textarea>
 					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Exercise on map
+
+							Write a function called `getGivenName()` that accepts an array of full names and returns the first name of every string.
+
+							```js
+								let names = [ 'Mojo Jojo', 'Fuzzy Lumpkins' ];
+								getGivenName( names ); // [ 'Mojo', 'Fuzzy' ]
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Filter
+
+							`filter` works like `map`, but it does not change the array. It returns an array of all elements for which the function returns `true`.
+
+							```js
+							let people = [ 'Buttercup', 'Blossom', 'Mojo' ];
+							let powerPuffGirls = people.filter( ( name ) => name !== 'Mojo' );
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Excercise on Filter
+
+							Write a function called `getSingleNames()` which accepts an array of full names and returns any name that contains only one word.
+
+							```js
+							let people = [ 'Buttercup', 'Fuzzy Lumpkins', 'Blossom' ];
+							getSingleNames( people ); // [ 'Buttercup', 'Blossom' ]
+							```
+						</textarea>
+					</section>
 				</section>
 
 				<section class="section-web-api">
