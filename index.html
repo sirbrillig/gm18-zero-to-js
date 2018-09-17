@@ -657,7 +657,7 @@ undefined
 							```js
 							let a = [ 'Ballio', 'Ben', 'Broke', 'Marjorie' ];
 							let b = [ 'Bubbles', 'Blossom', 'Buttercup', 'Mojo Jojo' ];
-							let c = [ 'Veselin', 'Payton' ];
+							let c = [ 'cookies', 'candy' ];
 							```
 
 							What are a, b, and c?
@@ -673,7 +673,7 @@ undefined
 							```js
 							let students = [ 'Ballio', 'Ben', 'Broke', 'Marjorie' ];
 							let cartoonCharacters = [ 'Bubbles', 'Blossom', 'Buttercup', 'Mojo Jojo' ];
-							let teachers = [ 'Veselin', 'Payton' ];
+							let snacks = [ 'cookies', 'candy' ];
 							```
 						</textarea>
 					</section>
@@ -1374,12 +1374,9 @@ undefined
 							Conditions must always be true or false.
 
 							```js
-							> function addIngredient( ingredient ) {
-								if ( ingredient === 'Everything Nice' ) {
-									console.log( 'Uh oh!' );
-									ingredient = 'Chemical X';
-								}
-								console.log( 'The Professor adds ' + ingredient + '!' );
+							> if ( ingredient === 'Everything Nice' ) {
+								console.log( 'Uh oh!' );
+								ingredient = 'Chemical X';
 							}
 							```
 						</textarea>
@@ -1508,7 +1505,9 @@ undefined
 							```
 						</textarea>
 					</section>
+				</section>
 
+				<section class="section-loops">
 					<section data-markdown>
 						<textarea data-template>
 							#### Loops
@@ -1516,10 +1515,10 @@ undefined
 							Loops let you repeat the same code multiple times until a condition is met.
 
 							```js
-							let bottlesOfBeer = 99
+							let bottlesOfBeer = 99;
 							while ( bottlesOfBeer > 0 ) {
-								console.log( bottlesOfBeer + ' bottles of beer on the wall' )
-								bottlesOfBeer = bottlesOfBeer - 1
+								console.log( bottlesOfBeer + ' bottles of beer on the wall' );
+								bottlesOfBeer = bottlesOfBeer - 1;
 							}
 							```
 						</textarea>
@@ -1532,9 +1531,9 @@ undefined
 							Be careful of infinite loops!
 
 							```js
-							let bottlesOfBeer = 99
+							let bottlesOfBeer = 99;
 							while ( bottlesOfBeer > 0 ) {
-								console.log( bottlesOfBeer + ' bottles of beer on the wall' )
+								console.log( bottlesOfBeer + ' bottles of beer on the wall' );
 							}
 							```
 						</textarea>
@@ -1542,27 +1541,26 @@ undefined
 
 					<section data-markdown>
 						<textarea data-template>
-							#### increment and decrement
+							#### Increment and Decrement
 
 							```js
-							let bottlesOfBeer = 99
-							bottlesOfBeer++; // 99
-							bottlesOfBeer; // 100
-							++bottlesOfBeer; // 101
-							--bottlesOfBear; // 100
+							let bottlesOfBeer = 99;
+
+							bottlesOfBeer = bottlesOfBeer + 1;
+							bottlesOfBeer++; // this does the same thing
 							```
 						</textarea>
 					</section>
 
 					<section data-markdown>
 						<textarea data-template>
-							#### for loop
+							#### For Loop
 
 							Exists in many languages and comes from Algol (1958)
 
 							```js
-							for ( let i = 0; i < 10; i++ ) {
-								console.log( i + " men on the dead man's chest --" );
+							for ( let index = 0; index < 10; index++ ) {
+								console.log( index + " men on the dead man's chest --" );
 								console.log( 'Yo ho ho, and a bottle of rum' );
 							}
 							```
@@ -1571,9 +1569,11 @@ undefined
 
 					<section data-markdown>
 						<textarea data-template>
-							#### Exercise on for and arrays
+							#### Exercise on for loops
 
-							Edit the previous example for `for` and make it so that it outputs 'Seven men on the...' instead of 7.
+							Edit the previous example and make it so that it outputs each number as an English word.
+
+							<span class="note">(`Seven men...` instead of `7 men...`)</span>
 						</textarea>
 					</section>
 
@@ -1581,13 +1581,43 @@ undefined
 						<textarea data-template>
 							#### Array Iteration with .forEach()
 
-							You can loop over each element of an array using a function.
+							You can loop over each element of an array using built-in functions.
 
 							```js
-							let powerPuffGirls = ['Buttercup', 'Blossom', 'Bubbles']
+							function outputName( name ) {
+								console.log( 'The name is ' + name );
+							}
+
+							let powerPuffGirls = ['Buttercup', 'Blossom', 'Bubbles'];
+							powerPuffGirls.forEach( outputName );
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Array Iteration with .forEach()
+
+							We can also use an anonymous function to make this shorter.
+
+							```js
+							let powerPuffGirls = ['Buttercup', 'Blossom', 'Bubbles'];
 							powerPuffGirls.forEach( function( name ) {
-								console.log( 'The name is ' + name )
-							} )
+								console.log( 'The name is ' + name );
+							} );
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							#### Array Iteration with .forEach()
+
+							We can even use the anonymous function shorthand.
+
+							```js
+							let powerPuffGirls = ['Buttercup', 'Blossom', 'Bubbles'];
+							powerPuffGirls.forEach( ( name ) => console.log( 'The name is ' + name ) );
 							```
 						</textarea>
 					</section>
@@ -1596,14 +1626,14 @@ undefined
 						<textarea data-template>
 							#### Array Iteration with .map()
 
-							`map` is just like `foreEach` but the result is a new array with modified array items
+							`map` is just like `forEach` but the result is a new array with modified array items
 
 							```js
 							let powerPuffGirls = ['Buttercup', 'Blossom', 'Bubbles']
-							let POWERPUFFGIRLS = powerPuffGirls.map( function( name ) {
+							let uppercasePowerPuffs = powerPuffGirls.map( function( name ) {
 								return name.toUpperCase();
 							} );
-							console.log( POWERPUFFGIRLS );
+							console.log( uppercasePowerPuffs );
 							```
 						</textarea>
 					</section>
@@ -1612,13 +1642,10 @@ undefined
 						<textarea data-template>
 							### Exercise on loops
 
-							1. Write a function that returns an array with the numbers from 3 to 11 by using while loop
-							1. Write a function `range` that returns the numbers from start to end using the while loop
-							1. Write that function with the for loop
-							1. Using the `range` function, write a function called `doubleRange` that returns the squares of the numbers from start to end
+							Write a function called `getRange()` that accepts two numbers and returns an array of all the numbers between them (inclusive).
 
 							```js
-								doubleRange( 3, 5 ); // [ 9, 16, 25 ]
+								getRange( 3, 6 ); // [ 3, 4, 5, 6 ]
 							```
 						</textarea>
 					</section>
