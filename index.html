@@ -320,7 +320,8 @@ undefined
 							#### Online tools
 
 							1. Open codepen.io
-							2. Type or copy-paste this and then click Run:
+							2. Click `Console` on the bottom.
+							3. Type this into the `JS` area:
 							```js
 								let myName = 'Blossom';
 								alert( 'My name is ' + myName );
@@ -371,9 +372,9 @@ undefined
 						<textarea data-template>
 							### How it works
 
-							1. The browser downloads all files
-							2. Executes the JavaScript line by line
-							3. If the browser cannot understand a line, it stops and displays an error in the console
+							1. The browser downloads files or they are loaded by node.
+							2. The engine executes the JavaScript line by line.
+							3. If the engine cannot understand a line, it stops and displays an error in the console.
 						</textarea>
 					</section>
 
@@ -385,7 +386,9 @@ undefined
 						<textarea data-template>
 							## JavaScript Fundamentals
 
-							<p class="fragment">Let's begin by using codepen, or node.</p>
+							Let's begin by using codepen or node.
+
+							If you use codepen, use this URL: https://codepen.io/pen/?editors=0012
 						</textarea>
 					</section>
 
@@ -421,6 +424,10 @@ undefined
 						<textarea data-template>
 							#### Console
 
+							`console.log()` is mostly used for debugging, but it's an easy way to print things out.
+
+							<span class="note">Put any expression between the parenthesis to see what it evaluates to.</span>
+
 							```js
 							console.log( 'Hello ' + 'World' );
 							```
@@ -445,6 +452,8 @@ undefined
 							#### Variables
 
 							Variables are like a box that holds something. The variable name points to the box.
+
+							<span class="note">Use `let` to define one.</span>
 
 							```js
 							let myName;
@@ -501,11 +510,11 @@ undefined
 						<textarea data-template>
 							#### Variables
 
-							After it is defined, any time you use the variable name, it will be substituted for its value!
+							After it is defined, any time you use the variable name, the value will be used instead!
 
 							```js
-							let myName = 'Mojo Jojo';
-							console.log( myName );
+							> let myName = 'Mojo Jojo';
+							> console.log( myName );
 							Mojo Jojo
 							```
 
@@ -557,16 +566,16 @@ undefined
 							You can even have multiple variables pointing to the same box.
 
 							```js
-							> let myName = 'Mojo Jojo';
-							> let theHero = myName;
-							> console.log( theHero );
-							Mojo Jojo
+							> let powerPuff = { name: 'Buttercup' };
+							> let theHero = powerPuff;
+							> console.log( theHero.name );
+							Buttercup
 							```
-							<svg width="200" height="80">
-								<rect x="90" y="0" width="100" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
-								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">myName ➡</text>
+							<svg width="300" height="80">
+								<rect x="90" y="0" width="150" height="80" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
+								<text x="0" y="20" font-family="Verdana" font-size="14" fill="white">powerPuff ➡</text>
 								<text x="0" y="50" font-family="Verdana" font-size="14" fill="white">theHero ➡</text>
-								<text x="100" y="45" font-family="Verdana" font-size="14" fill="black">'Mojo Jojo'</text>
+								<text x="100" y="45" font-family="Verdana" font-size="12" fill="black">{ name: 'Buttercup' }</text>
 							</svg>
 
 						</textarea>
@@ -576,7 +585,9 @@ undefined
 						<textarea data-template>
 							#### Variables
 
-							Other ways to define variables are `var` (an older version of `let`) and `const`.
+							Other ways to define variables: `var` and `const`.
+
+							`var` is an older version of `let`.
 
 							`const` variables cannot have their value re-assigned.
 							<span class="note">(but they _can_ have their value modified; more on that later)</span>
@@ -637,7 +648,7 @@ undefined
 
 							You can use the _concatenation_ operator on Strings to join them together!
 
-							<span class="note">`+`</span>
+							<span class="note">It looks just like the addition operator: `+`</span>
 
 							```js
 							> let myName = 'Mojo';
