@@ -1171,6 +1171,8 @@ undefined
 
 							Functions can send something back to the place where they are called using `return`.
 
+							<small>You can use a function call anywhere you could use a variable. The value is what comes after `return`.</small>
+
 							```js
 							> function buildName( first, last ) {
 								return first + ' ' + last + ' says hi.';
@@ -1186,7 +1188,7 @@ undefined
 						<textarea data-template>
 							#### Function Variables
 
-							Functions names can be used just like any variable.
+							Functions names (without parenthesis) are just like any other variable. Their value is the function itself.
 
 							```js
 							> function makeTea( first, last ) {}
@@ -1636,7 +1638,7 @@ undefined
 						<textarea data-template>
 							#### Array Iteration with .map()
 
-							`map` is just like `forEach` but the result is a new array with modified array items
+							`map` is just like `forEach` but the result is a new array with whatever the function returns.
 
 							```js
 							let powerPuffGirls = ['Buttercup', 'Blossom', 'Bubbles']
