@@ -1710,20 +1710,32 @@ undefined
 
 							JavaScript was made to interact with web pages.
 
-							```js
-							function showMojo() {
-								const mojo = window.document.querySelector( '.mojo-jojo' )
-								mojo.style.visibility = 'visible'
-							}
-							// the following goes in the HTML
-							<button onClick="showMojo()">Show Mojo</button>
-							```
-
 							<button onClick="showMojo()">Show Mojo</button>
 
 							<div class="mojo-jojo" style="visibility:hidden">
 								<img src="img/mojo.gif">
 							</div>
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## The Web API
+
+							JavaScript was made to interact with web pages.
+
+							JS:
+							```js
+							function showMojo() {
+								const mojo = window.document.querySelector( '.mojo-jojo' );
+								mojo.style.visibility = 'visible';
+							}
+							```
+							HTML:
+							```html
+							<button onClick="showMojo()">Show Mojo</button>
+							```
+
 						</textarea>
 					</section>
 
