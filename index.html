@@ -23,7 +23,7 @@
 	font-size: 0.8em;
 }
 
-.reveal span.note {
+.reveal small {
 	font-size: 0.7em;
 }
 
@@ -426,7 +426,7 @@ undefined
 
 							`console.log()` is mostly used for debugging, but it's an easy way to print things out.
 
-							<span class="note">Put any expression between the parenthesis to see what it evaluates to.</span>
+							<small>Put any expression between the parenthesis to see what it evaluates to.</small>
 
 							```js
 							console.log( 'Hello ' + 'World' );
@@ -453,7 +453,7 @@ undefined
 
 							Variables are like a box that holds something. The variable name points to the box.
 
-							<span class="note">Use `let` to define one.</span>
+							<small>Use `let` to define one.</small>
 
 							```js
 							let myName;
@@ -590,7 +590,7 @@ undefined
 							`var` is an older version of `let`.
 
 							`const` variables cannot have their value re-assigned.
-							<span class="note">(but they _can_ have their value modified; more on that later)</span>
+							<small>(but they _can_ have their value modified; more on that later)</small>
 
 							```js
 							> const myName = 'Mojo Jojo';
@@ -630,7 +630,7 @@ undefined
 
 							(or on variables that contain Numbers).
 
-							<span class="note">`+`, `-`, `*`, `/`, `%`</span>
+							<small>`+`, `-`, `*`, `/`, `%`</small>
 
 							```js
 							> let numberOfIngredients = 3;
@@ -648,7 +648,7 @@ undefined
 
 							You can use the _concatenation_ operator on Strings to join them together!
 
-							<span class="note">It looks just like the addition operator: `+`</span>
+							<small>It looks just like the addition operator: `+`</small>
 
 							```js
 							> let myName = 'Mojo';
@@ -770,7 +770,7 @@ undefined
 
 							You can add things to an array by calling `ourArray.push()`
 
-							<span class="note">These are "stack" methods. There is also `pop()`, `shift()`, and `unshift()`.</span>
+							<small>These are "stack" methods. There is also `pop()`, `shift()`, and `unshift()`.</small>
 
 							```js
 							> let powerPuffGirls = [ 'Bubbles', 'Buttercup' ];
@@ -846,7 +846,7 @@ undefined
 
 							They can contain multiple values like an Array, but each value must have a key, which is usually a string.
 
-							<span class="note">Also they do not have any order!</span>
+							<small>Also they do not have any order!</small>
 
 							<svg width="500" height="100">
 								<rect x="130" y="20" width="80" height="40" style="fill:rgb(255,255,255);stroke-width:4;stroke:rgb(0,0,0)" />
@@ -870,7 +870,7 @@ undefined
 
 							Objects store key/value pairs, separated by commas.
 
-							<span class="note">You can put the elements on the same line or multiple lines.</span>
+							<small>You can put the elements on the same line or multiple lines.</small>
 
 							```js
 							> let powerPuffGirls = {
@@ -890,7 +890,7 @@ undefined
 
 							You can find the value for an Object key (called a "property") by putting the key in brackets.
 
-							<span class="note">Note that strings must be quoted in brackets, but not quoted when defined.</span>
+							<small>Note that strings must be quoted in brackets, but not quoted when defined.</small>
 
 							```js
 							> let powerPuffGirls = {
@@ -1245,7 +1245,7 @@ undefined
 
 							Functions don't have to have a name, but you need to put them in a variable to use them.
 
-							<span class="note">This is basically the same as giving them a name.</span>
+							<small>This is basically the same as giving them a name.</small>
 
 							```js
 							> const sayHi = function( first, last ) {
@@ -1300,7 +1300,7 @@ undefined
 
 							Short fat-arrow functions can be written on one line more easily.
 
-							<span class="note">They return the result of the statement.</span>
+							<small>They return the result of the statement.</small>
 
 							```js
 							> const getGreeting = ( name ) => 'Hi ' + name;
@@ -1584,7 +1584,7 @@ undefined
 
 							Edit the previous example and make it so that it outputs each number as an English word.
 
-							<span class="note">(`Seven men...` instead of `7 men...`)</span>
+							<small>(`Seven men...` instead of `7 men...`)</small>
 						</textarea>
 					</section>
 
@@ -1967,7 +1967,7 @@ undefined
 
 							It's also possible to create new Nodes!
 
-							<span class="note">`window.document.body` is the Node that contains the HTML body.</note>
+							<small>`window.document.body` is the Node that contains the HTML body.</small>
 
 							```js
 							> const blossom = window.document.createElement( 'img' )
