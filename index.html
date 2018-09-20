@@ -2480,19 +2480,19 @@ undefined
 
 							```js
 							export function sayHi() {
-								console.log( 'The city of Townsville.' )
+								console.log( 'The city of Townsville.' );
 							}
 							export function sayGoodbye() {
-								console.log( 'Once again, the day is saved!' )
+								console.log( 'Once again, the day is saved!' );
 							}
 							```
 
 							Then you can import it by name in another file in the same directory:
 
 							```js
-							import { sayGoodbye, sayHi } from './say-goodbye'
-							sayGoodbye() // Once again, the day is saved!
-							sayHi() // The city of Townsville.
+							import { sayGoodbye, sayHi } from './say-goodbye';
+							sayGoodbye(); // Once again, the day is saved!
+							sayHi(); // The city of Townsville.
 							```
 
 						</textarea>
@@ -2505,7 +2505,7 @@ undefined
 							Notice that you can skip adding the `.js` to the file name.
 
 							```js
-							import sayGoodbye  from './say-goodbye'
+							import sayGoodbye  from './say-goodbye';
 							```
 
 						</textarea>
@@ -2519,7 +2519,7 @@ undefined
 
 							("node package manager", although it is not only for node)
 
-							To install a package named `react`, just type:
+							To install a package named `react`, just type into your shell:
 
 							```bash
 							npm install react
@@ -2537,7 +2537,7 @@ undefined
 							To import a module installed using `npm`, you can skip adding the `./` at the beginning.
 
 							```js
-							import React from 'react'
+							import React from 'react';
 							```
 
 						</textarea>
@@ -2684,11 +2684,9 @@ export class VerticalMenu extends PureComponent {
 						<textarea data-template>
 							## Additional Reading
 
-							<div class="center">
-								- https://www.javascript.com/
-								- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash
-								- https://snipcart.com/blog/javascript-beginner-intro-exercises
-							</div>
+							- https://www.javascript.com/
+							- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash
+							- https://snipcart.com/blog/javascript-beginner-intro-exercises
 
 						</textarea>
 					</section>
