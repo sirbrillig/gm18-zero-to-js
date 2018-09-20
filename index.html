@@ -1710,11 +1710,6 @@ undefined
 
 							JavaScript was made to interact with web pages.
 
-							<button onClick="showMojo()">Show Mojo</button>
-
-							<div class="mojo-jojo" style="visibility:hidden">
-								<img src="img/mojo.gif">
-							</div>
 						</textarea>
 					</section>
 
@@ -1722,56 +1717,18 @@ undefined
 						<textarea data-template>
 							## The Web API
 
-							JavaScript was made to interact with web pages.
-
-							JS:
 							```js
 							function showMojo() {
 								const mojo = window.document.querySelector( '.mojo-jojo' );
 								mojo.style.visibility = 'visible';
 							}
 							```
-							HTML:
-							```html
+
 							<button onClick="showMojo()">Show Mojo</button>
-							```
 
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							## if()
-							```js
-							function toggleMojo() {
-								const mojo = document.querySelector( '.mojo-jojo-toggle' )
-								if ( mojo.style.visibility === 'visible' ) {
-									mojo.style.visibility = 'hidden'
-								} else {
-									mojo.style.visibility = 'visible'
-								}
-							}
-							// the following goes in the HTML
-							<button onClick="toggleMojo()">Toggle Mojo</button>
-							```
-
-							<button onClick="toggleMojo()">Toggle Mojo</button>
-
-							<div class="mojo-jojo-toggle" style="visibility:hidden">
+							<div class="mojo-jojo" style="visibility:hidden">
 								<img src="img/mojo.gif">
 							</div>
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							## Exercise
-
-							<ul>
-								<li class="fragment">Make 3 toggles - one with Bubbles, Buttercup, and Blossom</li>
-								<li class="fragment">Make one button that alters a PPG</li>
-								<li class="fragment">Make the button display a random PPG</li>
-							</li>
 						</textarea>
 					</section>
 
@@ -1794,7 +1751,7 @@ undefined
 							Here we use `querySelector()` to find elements on the page.
 
 							```js
-							window.document.querySelector( '.mojo-jojo' )
+							window.document.querySelector( '.mojo-jojo' );
 							```
 						</textarea>
 					</section>
@@ -1808,7 +1765,7 @@ undefined
 							Here we are asking for the first element that has the `class` (that's the period) of `mojo-jojo`.
 
 							```js
-							window.document.querySelector( '.mojo-jojo' )
+							window.document.querySelector( '.mojo-jojo' );
 							```
 
 							Which finds this:
@@ -1828,7 +1785,7 @@ undefined
 							`querySelector()` can return `null` if it fails to find an element.
 
 							```js
-							> window.document.querySelector( '.fuzzy-lumpkins' )
+							> window.document.querySelector( '.fuzzy-lumpkins' );
 							null
 							```
 						</textarea>
@@ -1843,8 +1800,8 @@ undefined
 							`querySelectorAll()` returns an array-like object of all the matches.
 
 							```js
-							> const allSpans = window.document.querySelectorAll( 'span' )
-							> allSpans.length
+							> const allSpans = window.document.querySelectorAll( 'span' );
+							> allSpans.length;
 							350
 							```
 						</textarea>
@@ -1857,9 +1814,9 @@ undefined
 							There are other functions to find elements.
 
 							```js
-							window.document.getElementById( 'my-id' )
-							window.document.getElementsByTagName( 'span' )
-							window.document.getElementsByClassName( 'mojo-jojo' )
+							window.document.getElementById( 'my-id' );
+							window.document.getElementsByTagName( 'span' );
+							window.document.getElementsByClassName( 'mojo-jojo' );
 							```
 						</textarea>
 					</section>
@@ -1883,7 +1840,7 @@ undefined
 							Here, the variable `mojo` holds a DOM Node object.
 
 							```js
-							const mojo = window.document.querySelector( '.mojo-jojo' )
+							const mojo = window.document.querySelector( '.mojo-jojo' );
 							```
 						</textarea>
 					</section>
@@ -1897,8 +1854,8 @@ undefined
 							`style` is an object that holds CSS as properties.
 
 							```js
-							> const mojo = window.document.querySelector( '.mojo-jojo' )
-							> mojo.style.visibility
+							> const mojo = window.document.querySelector( '.mojo-jojo' );
+							> mojo.style.visibility;
 							'hidden'
 							```
 						</textarea>
@@ -1911,11 +1868,11 @@ undefined
 							We can change properties on DOM Nodes, and the changes usually take effect immediately.
 
 							```js
-							> const mojo = window.document.querySelector( '.mojo-jojo' )
-							> mojo.style.visibility
+							> const mojo = window.document.querySelector( '.mojo-jojo' );
+							> mojo.style.visibility;
 							'hidden'
-							> mojo.style.visibility = 'visible'
-							> mojo.style.visibility
+							> mojo.style.visibility = 'visible';
+							> mojo.style.visibility;
 							'visible'
 							```
 							<div class="fragment">
@@ -1932,7 +1889,7 @@ undefined
 
 							```js
 							// This is for the CSS property `margin-top`
-							> mojo.style.marginTop
+							> mojo.style.marginTop;
 							```
 						</textarea>
 					</section>
@@ -1944,10 +1901,10 @@ undefined
 							We can change HTML properties also.
 
 							```js
-							> const mojo = window.document.querySelector( '.mojo-jojo' )
-							> mojo.src
+							> const mojo = window.document.querySelector( '.mojo-jojo' );
+							> mojo.src;
 							'img/mojo.gif'
-							> mojo.src = 'img/blossom.png'
+							> mojo.src = 'img/blossom.png';
 							```
 							<button onClick="transformMojo()">Transform!</button>
 
@@ -1964,8 +1921,8 @@ undefined
 							We can actually change all the contents of an element using the `innerHTML` property.
 
 							```js
-							> const mojo = window.document.querySelector( '.mojo-jojo' )
-							> mojo.innerHTML = '<em>Curses!</em>'
+							> const mojo = window.document.querySelector( '.mojo-jojo' );
+							> mojo.innerHTML = '<em>Curses!</em>';
 							```
 
 							<button onClick="changeMojoSaying()">Defeat Mojo</button>
@@ -1983,9 +1940,9 @@ undefined
 							<small>`window.document.body` is the Node that contains the HTML body.</small>
 
 							```js
-							> const blossom = window.document.createElement( 'img' )
-							> blossom.src = 'img/blossom.png'
-							> window.document.body.appendChild( blossom )
+							> const blossom = window.document.createElement( 'img' );
+							> blossom.src = 'img/blossom.png';
+							> window.document.body.appendChild( blossom );
 							```
 
 							<button onClick="createPowerpuff()">Create Powerpuff</button>
@@ -2001,23 +1958,13 @@ undefined
 							If you want to create a Node that's just text, use `createTextNode()`
 
 							```js
-							> const bubbles = window.document.createTextNode( 'I am the joy and the laughter' )
-							> window.document.body.appendChild( bubbles )
+							> const bubbles = window.document.createTextNode( 'I am the joy and the laughter' );
+							> window.document.body.appendChild( bubbles );
 							```
 
 							<button onClick="createBubbles()">Create Bubbles</button>
 
 							<div class="create-bubbles"></div>
-						</textarea>
-					</section>
-
-					<section data-markdown>
-						<textarea data-template>
-							### Exercise
-
-							1. Create a page that has Bubbles 25 times.
-							1. Create a function that updates Bubbles to Buttercup 25 times
-							1. Create a function that adds a 3px colorful border to each image
 						</textarea>
 					</section>
 
@@ -2036,7 +1983,7 @@ undefined
 
 							Events are objects with information about what happened.
 
-							There are two ways to listen to events: `element.addEventListener()` in JavaScript and `on...` in the HTML.
+							There are two ways to listen to events: `element.addEventListener()` in JavaScript and `onClick` (and similar attributes) in the HTML.
 						</textarea>
 					</section>
 
@@ -2064,10 +2011,10 @@ undefined
 
 							```js
 							function getSnacks() {
-								const parent = window.document.querySelector( '.get-snacks' )
-								const blossom = window.document.createElement( 'img' )
-								blossom.src = 'img/ppg-chopsticks.jpg'
-								parent.appendChild( blossom )
+								const parent = window.document.querySelector( '.get-snacks' );
+								const blossom = window.document.createElement( 'img' );
+								blossom.src = 'img/ppg-chopsticks.jpg';
+								parent.appendChild( blossom );
 							}
 							```
 						</textarea>
@@ -2080,8 +2027,8 @@ undefined
 							You can also add the click handler function in pure JavaScript.
 
 							```js
-							const button = window.document.querySelector( '.get-snacks-button' )
-							button.addEventListener( 'click', getSnacks )
+							const button = window.document.querySelector( '.get-snacks-button' );
+							button.addEventListener( 'click', getSnacks );
 							```
 							 Notice that we are passing `getSnacks` as a variable! We are not calling it here, but sending it to be called later. This is called a "callback".
 						</textarea>
@@ -2106,14 +2053,12 @@ undefined
 					<section data-markdown>
 						<textarea data-template>
 							### Exercise
-							#### Mojo is dressed up as the Professor!
 
-							Create a page with Professor's photo
-							When the cursor is on it, make it swap with Mojo Jojo.
-							When you click on it, the day was saved by the PPG!
+							1. Create a page that has the word 'Bubbles' written 25 times.
+							1. Create a button that replaces every instance of that word with 'Buttercup'.
+							1. Create a button that makes every instance of that word bold.
 						</textarea>
 					</section>
-
 
 					<section data-markdown>
 						<textarea data-template>
@@ -2126,7 +2071,7 @@ undefined
 							```html
 							<script>
 								function showValue() {
-									alert( document.getElementById('myName').value )
+									alert( document.getElementById('myName').value );
 								}
 							</script>
 							<form>
@@ -2167,16 +2112,11 @@ undefined
 						<textarea data-template>
 							### Exercise
 
-							Use the previous example to create a form that has Name and Age.
+							Create a form that has a field with the label 'Age' and a submit button.
 
-							1. Age can be numbers only.
-							Name can be latin letters and spaces only.
+							When the button is clicked, verify that the Age is only a number.
 
-							In case of an error, display: "You have an error!" next to the form field.
-
-							2. Make sure the name field only allows names in the format:
-
-							First name Last name. First and last name are capitalized.
+							In case of an error, display: "You must enter a number!" next to the form field.
 						</textarea>
 					</section>
 
@@ -2184,13 +2124,13 @@ undefined
 						<textarea data-template>
 							### Pattern matching with regexp
 
-							JavaScript have access to powerful string methods using Regular Expressions
+							JavaScript has access to powerful string testing using Regular Expressions.
 
-							This is an example using .match
+							This is an example using `.match`
 							```js
 							<script>
-							console.log( 'Mojo Jojo'.match(/^[a-z ]+$/i) )
-							console.log( '123'.match(/^\d+$/) )
+							console.log( 'Mojo Jojo'.match(/^[a-z ]+$/i) );
+							console.log( '123'.match(/^\d+$/) );
 							</script>
 							```
 						</textarea>
@@ -2202,7 +2142,7 @@ undefined
 
 							```js
 							<script>
-							console.log( 'Jojo Jojo'.replace( 'oj', 'aj' ) )
+							console.log( 'Jojo Jojo'.replace( 'oj', 'aj' ) );
 							</script>
 							```
 						</textarea>
@@ -2212,10 +2152,10 @@ undefined
 						<textarea data-template>
 							### Exercise
 
-							We have this text:
-							'Mojo Jojo Jojo Jojo Mojo Jojo Mojo Jojo Mojo Jojo Jojo Jojo'
+							Make a page with this text:
+							`'Mojo is the best. Mojo is the best. Mojo is the best.'`
 
-							Use replace to make all Mojo Jojos Bubbles, then all Bubbles Jojos - Buttercup.
+							Make a button which uses `.replace` to change `Mojo` to `Buttercup`.
 						</textarea>
 					</section>
 				</section>
@@ -2239,8 +2179,8 @@ undefined
 							Here's what it looks like without a prototype:
 
 							```js
-							> const buttercup = {}
-							> buttercup.fight()
+							> const buttercup = {};
+							> buttercup.fight();
 							TypeError: buttercup.fight is not a function
 							```
 						</textarea>
@@ -2250,9 +2190,9 @@ undefined
 						<textarea data-template>
 							### Using Prototypes
 
-							A prototype is a special part of an Object.
+							A _prototype_ is a special part of an Object.
 
-							If set to another object, the properties of the prototype will act sort-of like "defaults" for the Object.
+							If set to another object, the properties of the prototype will act like "defaults" for the Object.
 						</textarea>
 					</section>
 
@@ -2277,11 +2217,11 @@ undefined
 							```js
 							> const fighter = {
 								fight: function() {
-									console.log( 'lazer eyes!' )
+									console.log( 'lazer eyes!' );
 								},
 							}
-							> const buttercup = Object.create( fighter )
-							> buttercup.fight()
+							> const buttercup = Object.create( fighter );
+							> buttercup.fight();
 							lazer eyes!
 							```
 						</textarea>
@@ -2296,14 +2236,14 @@ undefined
 							The _mysterious_ `new` keyword.
 
 							```js
-							> const Fighter = function() {}
+							> const Fighter = function() {};
 							> Fighter.prototype = {
 								fight: function() {
-									console.log( 'lazer eyes!' )
+									console.log( 'lazer eyes!' );
 								},
 							}
-							> const buttercup = new Fighter()
-							> buttercup.fight()
+							> const buttercup = new Fighter();
+							> buttercup.fight();
 							lazer eyes!
 							```
 						</textarea>
@@ -2324,18 +2264,18 @@ undefined
 
 					<section data-markdown>
 						<textarea data-template>
-							### Using Prototypes
+							### Using Class
 
-							A fancy third way to use `new` (but it does exactly the same thing):
+							A the `class` keyword is a fancy way to use `new` (but it does exactly the same thing):
 
 							```js
 							> class Fighter {
 								fight() {
-									console.log( 'lazer eyes!' )
+									console.log( 'lazer eyes!' );
 								}
 							}
-							> const buttercup = new Fighter()
-							> buttercup.fight()
+							> const buttercup = new Fighter();
+							> buttercup.fight();
 							lazer eyes!
 							```
 
@@ -2385,15 +2325,15 @@ undefined
 
 							```js
 							function foo() {
-								console.log( this.a )
+								console.log( this.a );
 							}
 
 							let obj = {
 								a: 2,
 								foo: foo,
-							}
+							};
 
-							obj.foo() // 2
+							obj.foo(); // 2
 							```
 
 							If a function is called after a period, then `this` inside the function will refer to the object that came before the period.
@@ -2407,11 +2347,11 @@ undefined
 
 							```js
 							function foo() {
-								console.log( this.a )
+								console.log( this.a );
 							}
 
-							let a = 2
-							foo() // undefined
+							let a = 2;
+							foo(); // undefined
 							```
 
 							If a function is called without a period, then `this` inside the function will be the `window` Object (in a browser).
@@ -2426,14 +2366,14 @@ undefined
 
 							```js
 							function foo() {
-								console.log( this.a )
+								console.log( this.a );
 							}
 
 							let obj = {
 								a: 2,
-							}
+							};
 
-							foo.call( obj ) // 2
+							foo.call( obj ); // 2
 							```
 						</textarea>
 					</section>
@@ -2446,15 +2386,15 @@ undefined
 
 							```js
 							function foo() {
-								console.log( this.a )
+								console.log( this.a );
 							}
 
 							let obj = {
 								a: 2,
-							}
+							};
 
-							const boundFoo = foo.bind( obj )
-							boundFoo() // 2
+							const boundFoo = foo.bind( obj );
+							boundFoo(); // 2
 							```
 						</textarea>
 					</section>
@@ -2468,16 +2408,16 @@ undefined
 							```js
 							function makeFoo() {
 								return () => {
-									console.log( this.a )
+									console.log( this.a );
 								}
 							}
 
 							let obj = {
 								a: 2,
-							}
+							};
 
-							const foo = makeFoo.call( obj )
-							foo() // 2
+							const foo = makeFoo.call( obj );
+							foo(); // 2
 							```
 						</textarea>
 					</section>
@@ -2495,7 +2435,7 @@ undefined
 							There are several ways to do this, but you will probably see a lot of this:
 
 							```js
-							import React from 'react'
+							import React from 'react';
 							```
 						</textarea>
 					</section>
@@ -2504,7 +2444,7 @@ undefined
 						<textarea data-template>
 							### import
 							```js
-							import React from 'react'
+							import React from 'react';
 							```
 
 							This imports the "default" export from the module called `react`.
@@ -2514,19 +2454,19 @@ undefined
 					<section data-markdown>
 						<textarea data-template>
 							### export
-							If you save this into a file called 'say-goodbye':
+							If you save this into a file called 'say-goodbye.js':
 
 							```js
 							export default function sayGoodbye() {
-								console.log( 'Once again, the day is saved!' )
+								console.log( 'Once again, the day is saved!' );
 							}
 							```
 
 							Then you can import it in another file in the same directory:
 
 							```js
-							import sayGoodbye from './say-goodbye'
-							sayGoodbye() // Once again, the day is saved!
+							import sayGoodbye from './say-goodbye.js';
+							sayGoodbye(); // Once again, the day is saved!
 							```
 
 						</textarea>
