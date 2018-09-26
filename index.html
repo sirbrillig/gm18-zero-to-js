@@ -2190,6 +2190,143 @@ undefined
 						</textarea>
 					</section>
 
+					<section data-markdown>
+						<textarea data-template>
+							### Adding Deletion
+
+							https://codepen.io/sirbrillig/pen/xaoQga?editors=1010
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Adding Persistence
+
+							https://codepen.io/sirbrillig/pen/dqBwyP?editors=1010
+
+						</textarea>
+					</section>
+
+				</section>
+
+				<section class="section-react">
+
+					<section data-markdown>
+						<textarea data-template>
+							### React
+
+							React pioneered a simple way to update pieces of the DOM.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### React
+
+							In the previous example, we re-rendered the whole list every time any part was changed.
+
+							In a big application, this would destroy performance, so in pre-React times, you'd have to do a lot of work to just change a small part.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Virtual DOM
+
+							React introduced the "virtual DOM".
+
+							A JS object which mirrors the actual DOM. Changing that is very fast.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Virtual DOM
+
+							Once you update the virtual DOM, React itself updates the real DOM with the smallest number of changes needed.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Virtual DOM
+
+							Because of the virtual DOM, we can (usually) safely re-render a massive application and it will only update what has changed.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### Virtual DOM
+
+							The downside of the virtual DOM is that since it is a JS object, we have to write all our HTML as JS objects.
+
+							```js
+							// <strong>Hello</strong>
+							React.createElement('strong', null, 'Hello');
+							```
+
+							To make this easier, React introduced JSX.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### JSX
+
+							React usually uses JSX (although it is not required).
+
+							JSX is like using HTML inside JS.
+
+							```js
+							function renderHello() {
+								return <strong>Hello</strong>;
+							}
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### JSX
+
+							JS cannot read JSX natively. It needs to be translated using a "transpiler".
+
+							This is a tool that reads something else (or just JS) and turns it into JS.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### JSX
+
+							The `babel` transpiler converts this:
+
+							```js
+							function renderHello() {
+								return <strong>Hello</strong>;
+							}
+							```
+
+							into this:
+							```js
+function renderHello() {
+  return React.createElement( "strong", null, "Hello" );
+}
+							```
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							### The To-Do List Using React
+
+							https://codepen.io/sirbrillig/pen/BOgbjy?editors=1010
+						</textarea>
+					</section>
+
 				</section>
 
 				<section class="section-binding-and-proto">
