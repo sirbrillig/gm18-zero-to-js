@@ -2591,6 +2591,116 @@ function renderHello() {
 
 				</section>
 
+				<section class="section-event-loop">
+
+					<section data-markdown>
+						<textarea data-template>
+							## The Event Loop
+
+							JS running on a web page needs to be able to respond to clicks and other events at any time.
+
+							To do this, JS runs in an infinite loop called...
+
+							**The Event Loop**
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## The Event Loop
+
+							JS may seem to be able to do many things at once, but it is actually just one process which checks for queued jobs and then runs them.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## The Event Loop
+
+							Jobs are queued whenever an event occurs, like clicking a button.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## The Event Loop
+
+							You can manually queue a job by using the (poorly named) `setTimeout()` function.
+
+							```js
+							setTimeout(() => alert('hello world'), 1000);
+							```
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## setTimeout
+
+							```js
+							setTimeout(() => alert('hello world'), 1000);
+							```
+
+							This reads "after 1 second, show an alert".
+
+							But _beware_! It might not actually be 1 second.
+
+							It will be whenever the loop next has nothing to do after 1 second has passed.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## setTimeout
+
+							```js
+							setTimeout(() => alert('hello world'), 0);
+							```
+
+							Sometimes it's useful to queue a job after the current job is done.
+
+							(This is not immediate.)
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Events
+
+							Other types of events are anything async, like network requests.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Network Requests
+
+							Before 1999, JS could not make its own network requests.
+
+							Then IE 5 added an object called `XMLHttpRequest`
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Network Requests
+
+							`XMLHttpRequest` inspired the pattern known as "AJAX" (Asynchronous JavaScript and XML) and led to the reinvigoration of JS and the first modern web apps.
+						</textarea>
+					</section>
+
+					<section data-markdown>
+						<textarea data-template>
+							## Network Requests
+
+							`XMLHttpRequest` and its more modern counterpart, `fetch()`, allow making a network request and waiting for the response.
+
+							Since this can take an indeterminate amount of time, the response must be handled by another job (a callback).
+						</textarea>
+					</section>
+
+				</section>
+
 				<section class="section-npm">
 
 					<section data-markdown>
