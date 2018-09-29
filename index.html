@@ -2699,6 +2699,20 @@ function renderHello() {
 						</textarea>
 					</section>
 
+					<section data-markdown>
+						<textarea data-template>
+							## Example Network Request
+
+							```js
+							fetch('https://jsonplaceholder.typicode.com/todos/1')
+							.then(response => response.json())
+							.then(json => console.log(json))
+							```
+
+							Try it yourself (https://jsonplaceholder.typicode.com/)
+						</textarea>
+					</section>
+
 				</section>
 
 				<section class="section-npm">
